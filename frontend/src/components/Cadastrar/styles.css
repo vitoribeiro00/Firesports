@@ -1,0 +1,85 @@
+.Container {
+    display: flex;
+    flex-direction: row;
+    background-color: #22142B;
+    color: #ffffff;
+    height: 100vh;
+}
+
+.ContainerImage {
+    flex: 50%;
+    background-color: black;
+}
+
+.ImagemFundo {
+    width: 100%;
+    height: 100%;
+    opacity: 0.5
+}
+
+.ContainerConteudo {
+    display: flex;
+    flex: 50%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ConteudoNomeSobrenome{
+    display: flex;
+    flex-direction: row;
+}
+
+.ContainerConteudo div.ModalCadastrar {
+    display: flex;
+    width: 400px;
+    height: 600px;
+    border: 2px #ffffff solid;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.FormularioCadastro {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.ConteudoFormularioCadastro {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+input {
+    margin-top: 10px;
+}
+
+label {
+    margin-top: 10px;
+}
+
+.ButtonCadastrar {
+    text-align: end;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.ButtonEntrar {
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.Footer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.Footer p {
+    padding: 0;
+    margin: 0;
+}

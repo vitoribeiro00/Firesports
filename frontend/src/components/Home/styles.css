@@ -1,0 +1,122 @@
+.Container0 {
+    display: flex;
+    flex-direction: row;
+    background-color: #22142B;
+    color: #ffffff;
+    height: 100vh;
+}
+
+.Menu {
+    flex: 0.6%;
+    background-color: #ffffff;
+}
+
+.MenuBotao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.BotaoLogar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BotaoComunidade{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.BotaoJogos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.BtnLogar{
+    background-color: #22142B;
+    color: #FFFFFF;
+    width: 250px;
+    Height:30px
+}
+
+.BtnComunidade{
+    background-color: #22142B;
+    color: #FFFFFF;
+    width: 250px;
+    Height:30px
+}
+
+.BtnJogos{
+    background-color: #22142B;
+    color: #FFFFFF;
+    width: 250px;
+    Height:30px
+}
+
+.Footer0{
+    flex-direction: column;
+    text-align: center;
+    margin-top: 280px;
+    color: black;
+    font-size:10px ;
+}
+
+.ContainerConteudo0 {
+    flex: 50%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.ContainerConteudo0 div.ModalHome0 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.PaginaInicial {
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+.ConteudoPaginaInicial {
+    flex-direction: column;
+    margin-left: 50px;
+    text-align: center;
+}
+
+.TextoConteudo {
+    margin-top: 30px;
+}
+
+.ButtonInicial{
+    display: flex;
+    flex:1;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.ButtonGerarCodigo {
+    margin-left: 30px;
+}
+
+.BtnCriarTorneio{
+    background-color: #6441A5;
+    color: #FFFFFF;
+    width: 250px;
+    Height:30px
+}
+
+.BtnGerarCodigo{
+    background-color: #6441A5;
+    color: #FFFFFF;
+    width: 250px;
+    Height:30px
+}
