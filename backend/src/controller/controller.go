@@ -7,7 +7,7 @@ import (
 )
 
 type Response struct {
-	StatusCode int64 `json:"statusCode"`
+	StatusCode int64 `json:"StatusCode"`
 }
 
 
@@ -24,6 +24,7 @@ func EntrarUsuario(w http.ResponseWriter, r *http.Request) {
 			},
 		)
 	}
+
 	usuario := r.PostFormValue("usuario")
 	senha := r.PostFormValue("senha")
 
@@ -50,6 +51,7 @@ func CadastrarUsuario(w http.ResponseWriter, r *http.Request){
 			},
 		)
 	}
+	
 	nome := r.PostFormValue("nome")
 	sobrenome := r.PostFormValue("sobrenome")
 	dataNascimento := r.PostFormValue("dataNascimento")

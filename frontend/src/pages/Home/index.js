@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 
@@ -10,17 +11,12 @@ const Home = () => {
             <Header />
             <div className="modalHome">
                 <div className="conteudoTextoHome">
-                    <p >Pronto para simplificar o gerenciamento de seu torneio?</p>
-                    <p>Junte-se aos milhares de pessoas que confiam Firesports para gerir os seus torneios </p>    
+                    <p >Pronto para simplificar o gerenciamento do seu torneio?</p>
+                    <p>Junte-se a milhares de pessoas que confiam Firesports para gerir os seus torneios </p>    
                 </div>
-                
                 <div className="conteudoBotaoHome">
-                    <div className="botaoCriarTorneioHome">
-                        <button>Criar Torneio</button>
-                    </div>
-                    <div className="botaoGerarCodigoHome">
-                        <button>Usar Gerador de Código</button>
-                    </div>                                
+                    <Link to="/torneios"><div>Criar Torneio</div></Link>
+                    <Link to=""><div>Usar Gerador de Código</div></Link>                                
                 </div>
             </div>
         </div>

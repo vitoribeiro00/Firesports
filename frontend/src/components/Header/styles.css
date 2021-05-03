@@ -1,43 +1,46 @@
 .menu {
-    display: block;
+    display: flex;
     position: fixed;
     width: 350px;
     background-color: #ffffff;
     height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cabecalhoMenu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logoMenu {
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    margin-top: 100px;
+    border-radius: 50px;
 }
 
 .conteudoMenu{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 200px;
 }
 
-.botaoComunidadeMenu{
+.conteudoMenu div {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.botaoJogosMenu{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.botaoEntrarMenu{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.footerMenu{
-    flex-direction: column;
+    width: 240px;
+    height: 40px;
+    background-color: #22142B;
+    color: #FFFFFF;
     text-align: center;
-    margin-top: 280px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.rodapeMenu{
+    text-align: center;
     color: black;
-    font-size:15px;
 }

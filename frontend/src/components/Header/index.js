@@ -7,20 +7,18 @@ class Button extends Component {
     render() {
         return (
             <div className="menu">
+                <div className="cabecalhoMenu">
+                    <Link to="/"><div className="logoMenu"></div></Link>
+                </div>
                 <div className="conteudoMenu">
-                    <div className="botaoComunidadeMenu">
-                        <button><Link to="/comunidade">Comunidade</Link></button>
-                    </div>
-                    <div className="botaoJogosMenu">
-                        <button><Link to="/jogos">Jogos</Link></button>
-                    </div>
-                    <div className="botaoEntrarMenu">
-                        <button><Link to="/entrar">Entrar</Link></button>
-                    </div>
-                    <div className="footerMenu">
-                        <p>Todos os direitos reservados</p>
-                        <p>Firesports@2021</p>
-                    </div>
+                    <Link to="/rank"><div>Rank</div></Link>
+                    <Link to="/comunidade"><div>Comunidade</div></Link>
+                    <Link to="/jogos"><div>Jogos</div></Link>
+                    <Link to="/entrar"><div>Entrar</div></Link>
+                </div>
+                <div className="rodapeMenu">
+                    <p>Todos os direitos reservados</p>
+                    <p>Firesports@2021</p>
                 </div>
             </div>
         )

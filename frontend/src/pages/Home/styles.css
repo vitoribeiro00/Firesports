@@ -5,23 +5,41 @@
 }
 
 .modalHome{
+    display: flex;
     width: 100%;
-    text-align: center;
     margin-left: 350px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .conteudoTextoHome {
-    margin-top: 70px;
-}
-
-.conteudoTextoHome p {
-    color: #FFF;
+    margin: 0;
+    padding: 0;
+    color: #FFFFFF;
+    font-size: 20px;
 }
 
 .conteudoBotaoHome {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.conteudoBotaoHome a {
+    text-decoration: none;
+}
+
+.conteudoBotaoHome div {
+    background-color: #FFFFFF;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #22142B;
+    border-radius: 5px;
 }
 
 .botaoCriarTorneioHome {
