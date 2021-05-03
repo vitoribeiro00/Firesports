@@ -1,0 +1,33 @@
+.containerHome {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.modalHome{
+    width: 100%;
+    text-align: center;
+    margin-left: 350px;
+}
+
+.conteudoTextoHome {
+    margin-top: 70px;
+}
+
+.conteudoTextoHome p {
+    color: #FFF;
+}
+
+.conteudoBotaoHome {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.botaoCriarTorneioHome {
+    margin: 10px;
+}
+
+.botaoGerarCodigoHome {
+    margin: 10px;
+}

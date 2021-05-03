@@ -1,51 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import Reactotron from 'reactotron-react-js'
+import { signInRequest } from '../../store/modules/auth/actions';
 
-import axios from 'axios';
+import Reactotron from 'reactotron-react-js';
 
 import ImagemVava from '../../images/sova-valorant.jpg';
 import '../Entrar/styles.css';
 
-const Entrar = () => {
-    const [inputUsuario, setInputUsuario] = useState("")
-    const [inputSenha, setInputSenha] = useState("")
-    const [statusLogin, setStatusLogin] = useState(0)
-    const [mensagemErro, setMensagemErro] = useState("")
+const Entrar = ({history}) => {
+    const dispatch = useDispatch();
+    let statusCode = useSelector(state => state.auth.statusCode)
 
-    function VerificarEntrar() {
-        
+    const [inputUsuario, setInputUsuario] = useState("");
+    const [inputSenha, setInputSenha] = useState("");
+    const [statusLogin, setStatusLogin] = useState(0);
+    const [mensagemErro, setMensagemErro] = useState("");
+
+    const handleSubmit = () => {
         setMensagemErro("")
-
+    
         if (inputUsuario === "" || inputSenha === "") {
-            setMensagemErro("O campo usuario/senha não estão preenchidos.")
+            setMensagemErro("O campo usuario/senha não estão preenchidos.");
         }
 
-        // const data =  { "usuario": "admin", "senha": "admin" }
-        
-        const params = new URLSearchParams()
-        params.append("usuario", inputUsuario)
-        params.append("senha", inputSenha)
-
-        const options = {
-            headers: { 'content-type': 'application/x-www-form-urlencoded' }
-        }
-
-        axios.post("http://localhost:8090/entrar", params, options)
-            .then(resp => {
-                Reactotron.log(resp.data)
-                if(resp.data.statusCode){
-                    setStatusLogin(resp.data.statusCode)
-                } else {
-                    setMensagemErro("Os dados preenchidos estão incorretos.")
-                }
-            })
-            .catch(err => {
-                Reactotron.log(err)
-                setMensagemErro("Erro interno: " + err.mensage)
-            })
+        dispatch(signInRequest(inputUsuario, inputSenha));
     }
 
+    useEffect(() => {
+        if (statusCode == 1) {
+            Reactotron.log("Logado com sucesso! - " + statusCode)
+            history.push("/")
+        } else {
+            setMensagemErro("Usuario ou senha incorreta.")
+        }
+    }, [statusCode])
 
     return (
         <div className="Container">
@@ -61,7 +50,7 @@ const Entrar = () => {
                         <input type="password" name="password" onChange={ (event) => {setInputSenha(event.target.value)}}/>
                     </div>
                     <div className="ButtonEntrar">
-                        <button onClick={VerificarEntrar}>Entrar</button>
+                        <button onClick={handleSubmit}>Entrar</button>
                     </div>
                     <div className="ConteudoLink">
                         <p>Esqueci a senha</p>

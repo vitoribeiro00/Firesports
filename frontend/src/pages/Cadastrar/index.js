@@ -4,9 +4,9 @@ import axios from 'axios';
 
 import ImagemVava from '../../images/sova-valorant.jpg';
 
-import Reactotron from 'reactotron-react-js';
-
 import './styles.css';
+
+import Reactotron from 'reactotron-react-js';
 
 const Cadastrar = () => {
     const [nome, setNome] = useState('')
@@ -40,10 +40,8 @@ const Cadastrar = () => {
 
                 axios.post("http://localhost:8090/cadastrar", params, options)
                     .then(resp => {
-                        Reactotron.log(resp.data)
-                        if(resp.data.statusCode){
-                            Reactotron.log("Executou")
-                            Reactotron.log(resp.data.statusCode)
+                        if (resp.data.statusCode) {
+                            Reactotron.log("Cadastrar")
                         } else {
                             setMensagemErro("Os dados preenchidos estão incorretos.")
                         }
