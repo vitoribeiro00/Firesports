@@ -1,6 +1,7 @@
 import React from "react";
 
 import Header from '../../components/Header';
+import Jogo from '../../components/Jogo';
 
 import "./styles.css";
 
@@ -15,7 +16,12 @@ const Jogos = () => {
                     <p>Supere seus limites, e fique no topo!</p>
                 </div>
 
-                <div className="conteudoImagemJogos">
+                <div className="conteudoJogos">
+                    <div className="jogoJogos">
+
+                        <Jogo />
+                    </div>
+                    {/* <div className="imagemTesteJogo"></div>
                     <div className="imagemTesteJogo"></div>
                     <div className="imagemTesteJogo"></div>
                     <div className="imagemTesteJogo"></div>
@@ -26,8 +32,7 @@ const Jogos = () => {
                     <div className="imagemTesteJogo"></div>
                     <div className="imagemTesteJogo"></div>
                     <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div> 
+                    <div className="imagemTesteJogo"></div>  */}
                 </div>
             </div>
         </div>

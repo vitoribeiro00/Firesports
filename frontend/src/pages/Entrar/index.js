@@ -5,17 +5,15 @@ import { signInRequest } from '../../store/modules/auth/actions';
 
 import Reactotron from 'reactotron-react-js';
 
-import ImagemVava from '../../images/sova-valorant.jpg';
 import '../Entrar/styles.css';
 
 const Entrar = ({history}) => {
     const dispatch = useDispatch();
     let statusCode = useSelector(state => state.auth.statusCode)
 
-    const [inputUsuario, setInputUsuario] = useState("");
-    const [inputSenha, setInputSenha] = useState("");
-    const [statusLogin, setStatusLogin] = useState(0);
-    const [mensagemErro, setMensagemErro] = useState("");
+    const [inputUsuario, setInputUsuario] = useState("")
+    const [inputSenha, setInputSenha] = useState("")
+    const [mensagemErro, setMensagemErro] = useState("")
 
     const handleSubmit = () => {
         setMensagemErro("")
@@ -28,7 +26,7 @@ const Entrar = ({history}) => {
     }
 
     useEffect(() => {
-        if (statusCode == 1) {
+        if (statusCode === 1) {
             Reactotron.log("Logado com sucesso! - " + statusCode)
             history.push("/")
         } else {
@@ -39,7 +37,7 @@ const Entrar = ({history}) => {
     return (
         <div className="Container">
             <div className="ContainerImage">
-                <img src={ImagemVava} alt="Meu champion do vava" className="ImagemFundo"/>
+                <img src="/images/sova-valorant.jpg" alt="Meu champion do vava" className="ImagemFundo"/>
             </div>
             <div className="ContainerConteudo">
                 <div className="ModalEntrar">

@@ -17,17 +17,17 @@
     margin-top: 40px;
 }
 
-.conteudoImagemJogos {
+.conteudoJogos {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
 
-.imagemTesteJogo {
+.jogoJogos {
     box-sizing: border-box;
     padding: 1rem;
     margin: 1rem;
     background-color:#FFFFFF;
     width: calc((100% / 4) - 2rem); /* calco para descontar a margem da largura do box se aumenta a marge tem que ajustar aqui tb */
-    height: 60vh;
+    height: 400px;
 }

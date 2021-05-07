@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 import axios from 'axios';
 
-import ImagemVava from '../../images/sova-valorant.jpg';
-
 import './styles.css';
 
 import Reactotron from 'reactotron-react-js';
@@ -16,7 +14,7 @@ const Cadastrar = () => {
     const [confirmarSenha, setConfirmarSenha] = useState('')
     const [dataNascimento, setDataNascimento] = useState('')
     const [usuario, setUsuario] = useState('')
-    const [termoUso, setTermoUso] = useState(true)
+    const [checkedTermoUso, setCheckedTermoUso] = useState(false)
     const [mensagemErro, setMensagemErro] =useState('')
 
     const Cadastrar = () => {
@@ -24,7 +22,7 @@ const Cadastrar = () => {
             setMensagemErro("")
         }
 
-        if (termoUso) {
+        if (checkedTermoUso) {
             if (senha === confirmarSenha) {
                 const params = new URLSearchParams()
                 params.append("nome", nome)
@@ -59,7 +57,7 @@ const Cadastrar = () => {
     return (
         <div className="Container">
             <div className="ContainerImage">
-                <img src={ImagemVava} alt="Meu champion do vava" className="ImagemFundo"/>
+                <img src="/images/sova-valorant.jpg" alt="Meu champion do vava" className="ImagemFundo"/>
             </div>
             <div className="ContainerConteudo">
                 <div className="ModalCadastrar">
@@ -79,7 +77,7 @@ const Cadastrar = () => {
                         <label>Data de Nascimento</label>
                         <input type="date" name="inputDataNasc" onChange={ (event) => {setDataNascimento(event.target.value)}}/>
                     </div>
-                    <p><input type="checkbox" checked={true} />Aceito os termos de uso</p>
+                    <p><input type="checkbox" defaultChecked={checkedTermoUso} onChange={() => setCheckedTermoUso(!checkedTermoUso)}/>Aceito os termos de uso</p>
                     <div className="ButtonCadastrar">
                         <button onClick={()=> {Cadastrar()}}>Cadastrar</button>
                     </div>

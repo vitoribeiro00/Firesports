@@ -1,5 +1,3 @@
-import Reactotron from 'reactotron-react-js';
-
 export function signInRequest(usuario, senha) {
     return {
       type: '@auth/SIGN_IN_REQUEST',

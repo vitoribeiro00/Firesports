@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './styles.css';
+import './styles.css';
 
 class Button extends Component {
     render() {
