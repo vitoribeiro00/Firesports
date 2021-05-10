@@ -27,10 +27,10 @@ const Entrar = ({history}) => {
 
     useEffect(() => {
         if (statusCode === 1) {
-            Reactotron.log("Logado com sucesso! - " + statusCode)
-            history.push("/")
-        }
-    }, [statusCode])
+            Reactotron.log("Logado com sucesso! - " + statusCode);
+            history.push("/")}
+        }, [statusCode]
+    )
 
     return (
         <div className="ContainerEntrar">

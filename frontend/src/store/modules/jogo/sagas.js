@@ -7,7 +7,7 @@ import { CarregarJogos } from './actions';
 
 import Reactotron from 'reactotron-react-js';
 
-export function* searchJogos() {
+export function* SearchJogos() {
   try {
 
     const response = yield call(api.get, 'jogos');
@@ -21,5 +21,5 @@ export function* searchJogos() {
 }
 
 export function* jogoSagas() {
-  yield takeLatest('@auth/SEARCH_JOGOS', searchJogos);
+  yield takeLatest('@auth/SEARCH_JOGOS', SearchJogos);
 }

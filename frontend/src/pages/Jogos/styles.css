@@ -17,7 +17,7 @@
     margin-top: 40px;
 }
 
-.conteudoJogos {
+.listaDeJogos {
     display: flex;
     flex-wrap: wrap;
     width: 100%;

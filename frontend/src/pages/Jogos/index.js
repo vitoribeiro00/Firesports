@@ -9,6 +9,7 @@ import { SearchJogos } from '../../store/modules/jogo/actions';
 
 import "./styles.css";
 
+
 const Jogos = () => {
     const dispatch = useDispatch();
     let jogos = useSelector(state => state.jogo.jogos);
@@ -26,7 +27,7 @@ const Jogos = () => {
                     <p>Supere seus limites, e fique no topo!</p>
                 </div>
 
-                <div className="conteudoJogos">
+                <div className="listaDeJogos">
                     {jogos.map(jogo => (
                         <Jogo className="jogoJogos" idJogo={jogo.JogoId} nome={jogo.Nome} image={jogo.Image}/>
                     ))}

@@ -1,27 +1,30 @@
-.conteudoTorneio{
+.conteudoTorneios {
     display: flex;
     flex-direction: row;
     height: 100vh;
 }
 
-.conteudoModalTorneio {
+.conteudoModalTorneios {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding-left: 350px;
 }
 
-.conteudoTextoMotivacionalTorneio {
+.conteudoTextoMotivacionalTorneios {
     text-align: center;
     color: #FFFFFF;
     margin-top: 40px;
 }
 
-.conteudoImagemTorneio {
+.listaDeTorneios {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    height: 100%;
 }
+
+/* 
 
 .imagemTesteTorneio {
     box-sizing: border-box;
@@ -29,5 +32,5 @@
     margin: 1rem;
     background-color:#FFFFFF;
     width: calc((100% / 4) - 2rem); /* calco para descontar a margem da largura do box se aumenta a marge tem que ajustar aqui tb */
-    height: 60vh;
-}
+    /*height: 60vh;
+} */
