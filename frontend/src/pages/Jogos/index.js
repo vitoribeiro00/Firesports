@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 
 import Header from '../../components/Header';
 import Jogo from '../../components/Jogo';
 
+import { SearchJogos } from '../../store/modules/jogo/actions';
+
 import "./styles.css";
 
 const Jogos = () => {
+    const dispatch = useDispatch();
+    let jogos = useSelector(state => state.jogo.jogos);
+
+    useEffect(() => {
+        dispatch(SearchJogos());
+    }, [])
 
     return (
         <div className="conteudoJogos">
@@ -17,22 +27,9 @@ const Jogos = () => {
                 </div>
 
                 <div className="conteudoJogos">
-                    <div className="jogoJogos">
-
-                        <Jogo />
-                    </div>
-                    {/* <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>
-                    <div className="imagemTesteJogo"></div>  */}
+                    {jogos.map(jogo => (
+                        <Jogo className="jogoJogos" idJogo={jogo.JogoId} nome={jogo.Nome} image={jogo.Image}/>
+                    ))}
                 </div>
             </div>
         </div>

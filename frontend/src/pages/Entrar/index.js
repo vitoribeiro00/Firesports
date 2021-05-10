@@ -29,19 +29,17 @@ const Entrar = ({history}) => {
         if (statusCode === 1) {
             Reactotron.log("Logado com sucesso! - " + statusCode)
             history.push("/")
-        } else {
-            setMensagemErro("Usuario ou senha incorreta.")
         }
     }, [statusCode])
 
     return (
-        <div className="Container">
-            <div className="ContainerImage">
-                <img src="/images/sova-valorant.jpg" alt="Meu champion do vava" className="ImagemFundo"/>
+        <div className="ContainerEntrar">
+            <div className="ContainerImageEntrar">
+                <img src="/images/sova-valorant.jpg" alt="Meu champion do vava" className="ImagemFundoEntrar"/>
             </div>
-            <div className="ContainerConteudo">
+            <div className="ContainerConteudoEntrar">
                 <div className="ModalEntrar">
-                    <div className="ConteudoFormulario">
+                    <div className="ConteudoFormularioEntrar">
                         <label>Usuario</label>
                         <input type="text" name="usuario" onChange={(event)=> {setInputUsuario(event.target.value)}} />
                         <label>Senha</label>
@@ -50,17 +48,17 @@ const Entrar = ({history}) => {
                     <div className="ButtonEntrar">
                         <button onClick={handleSubmit}>Entrar</button>
                     </div>
-                    <div className="ConteudoLink">
+                    <div className="ConteudoLinkEntrar">
                         <p>Esqueci a senha</p>
                         <p>Cadastrar</p>
                     </div>
-                    <div className="MensagemError">
+                    <div className="MensagemErrorEntrar">
                         <p>
                             { mensagemErro !== "" && mensagemErro }
                         </p>
                     </div>
                 </div>
-                <div className="Footer">
+                <div className="FooterEntrar">
                     <p>Todos os direitos reservados</p>
                     <p>Firesports@2021</p>
                 </div>

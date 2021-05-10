@@ -10,7 +10,6 @@ type Response struct {
 	StatusCode int64 `json:"StatusCode"`
 }
 
-
 func EntrarUsuario(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST")
@@ -38,7 +37,7 @@ func EntrarUsuario(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
-func CadastrarUsuario(w http.ResponseWriter, r *http.Request){
+func CadastrarUsuario(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST")
 
@@ -51,7 +50,7 @@ func CadastrarUsuario(w http.ResponseWriter, r *http.Request){
 			},
 		)
 	}
-	
+
 	nome := r.PostFormValue("nome")
 	sobrenome := r.PostFormValue("sobrenome")
 	dataNascimento := r.PostFormValue("dataNascimento")
@@ -66,6 +65,15 @@ func CadastrarUsuario(w http.ResponseWriter, r *http.Request){
 			StatusCode: id,
 		},
 	)
+}
+
+func BuscarJogos(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET")
+
+	jogos := dao.BuscarJogos()
+
+	json.NewEncoder(w).Encode(jogos)
 }
 
 // Função usada para renderizar o arquivo Index

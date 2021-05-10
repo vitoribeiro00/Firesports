@@ -28,6 +28,10 @@
     align-items: center;
 }
 
+.conteudoMenu a {
+    margin: 5px;
+}
+
 .conteudoMenu div {
     display: flex;
     width: 240px;

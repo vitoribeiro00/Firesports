@@ -1,4 +1,4 @@
-.Container {
+.ContainerEntrar {
     display: flex;
     flex-direction: row;
     background-color: #22142B;
@@ -6,18 +6,18 @@
     height: 100vh;
 }
 
-.ContainerImage {
+.ContainerImageEntrar {
     flex: 50%;
     background-color: black;
 }
 
-.ImagemFundo {
+.ImagemFundoEntrar {
     width: 100%;
     height: 100%;
     opacity: 0.5
 }
 
-.ContainerConteudo {
+.ContainerConteudoEntrar {
     display: flex;
     flex: 50%;
     align-items: center;
@@ -25,7 +25,7 @@
     flex-direction: column;
 }
 
-.ContainerConteudo div.ModalEntrar {
+.ContainerConteudoEntrar div.ModalEntrar {
     display: flex;
     width: 400px;
     height: 400px;
@@ -35,23 +35,23 @@
     justify-content: center;
 }
 
-.Formulario {
+.FormularioEntrar {
     padding-right: 100px;
     padding-left: 100px;
 }
 
-.ConteudoFormulario {
+.ConteudoFormularioEntrar {
     display: flex;
     flex-direction: column;
     margin-left: 80px;
     margin-right: 80px;
 }
 
-input {
+.ConteudoFormularioEntrar input {
     margin-top: 10px;
 }
 
-label {
+.ConteudoFormularioEntrar label {
     margin-top: 10px;
 }
 
@@ -59,25 +59,22 @@ label {
     margin-top: 20px;
 }
 
-.ConteudoLink {
+.ConteudoLinkEntrar {
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
 
-.ConteudoLink p {
+.ConteudoLinkEntrar p {
     margin: 0;
     padding-top: 10px;
 }
 
-.MensagemError p {
+.MensagemErrorEntrar p {
     color: red;
 }
 
-a {
-    margin: 5px;
-}
-.Footer {
+.FooterEntrar {
     display: flex;
     flex-direction: column;
     text-align: center;
