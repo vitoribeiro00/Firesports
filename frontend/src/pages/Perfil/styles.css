@@ -1,0 +1,32 @@
+.containerPerfil{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.conteudoPerfil{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 350px;
+}
+
+.meusTimesPerfil{
+    text-align: center;
+    color: #FFF;
+}
+
+.btnAdicionarTime{
+    color: #FFF;
+    background-color: green;
+    height: 100px;
+    width: 200px;
+    font-size: 48pt;
+    margin: 20px
+}
+
+.menuTimes{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+}
