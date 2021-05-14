@@ -12,8 +12,8 @@ export function signInSuccess(statusCode) {
     };
   }
   
-  export function signFailure() {
-    return {
-      type: '@auth/SIGN_FAILURE',
-    };
-  }
+export function signFailure() {
+  return {
+    type: '@auth/SIGN_FAILURE',
+  };
+}

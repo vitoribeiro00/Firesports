@@ -1,7 +1,9 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  statusCode: 0,
+  statusCode: -1,
+  nome: "",
+  sobrenome: "",
 };
 
 

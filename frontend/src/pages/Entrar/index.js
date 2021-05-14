@@ -26,7 +26,12 @@ const Entrar = ({history}) => {
     }
 
     useEffect(() => {
-        if (statusCode === 1) {
+        if (statusCode == 0){
+            Reactotron.log("Falha ao logar no sistema - " + statusCode)
+            setMensagemErro("Usuário e Senha errada!")
+        }
+
+        else if (statusCode === 1) {
             Reactotron.log("Logado com sucesso! - " + statusCode);
             history.push("/")}
         }, [statusCode]

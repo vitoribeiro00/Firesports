@@ -1,0 +1,173 @@
+.ConteinerRank{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.ConteudoRanking{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.conteudoTextoMotivacionalRank p{
+    font-size: 18px;
+}
+.ConteudoRanking div {
+    flex-direction: column;
+}
+
+.ConteudoRankingTime{
+    flex-direction: row;
+}
+
+.ConteudoModalRank{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 350px;
+}
+.conteudoTextoMotivacionalRank {
+    flex-direction: row;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 40px;
+}
+.IndividualRanking{
+    width: 380px;
+    margin: 20px;
+}
+.TextoRankingIndividual{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 50px;
+}
+
+.TextoRankingIndividual p{
+    color: #22142B;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+}
+
+.TextoTimeRanking{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 50px;
+}
+
+.TextoTimeRanking p{
+    color: #22142B;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+}
+
+.TimeRanking{
+    width: 380px;
+    margin: 20px;
+}
+
+.IndividualRanking table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    width: 100%;  
+  }
+  
+  
+ .IndividualRanking td, th {
+    border: 1px solid rgb(250, 250, 250);
+    padding: 10px 20px;
+  }
+  
+ .IndividualRanking th {
+    background-color: rgb(235,235,235);
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e;
+  }
+
+
+  .IndividualRanking td, a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e;
+  }
+  
+  .IndividualRanking a {
+    text-decoration: none;
+  }
+  
+  .IndividualRanking :hover {
+    color: #2980b9;
+  }
+  
+  .IndividualRanking:visited {
+    color: #2980b9;
+  }
+  
+  .IndividualRanking:nth-child(even) td {
+    background-color: rgba(250, 250, 250);
+  }
+  
+  .IndividualRanking:nth-child(odd) td {
+    background-color: rgb(245,245,245);
+  }
+
+
+
+
+
+
+  .TimeRanking table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    width: 100%;  
+  }
+  
+  
+ .TimeRanking td, th {
+    border: 1px solid rgb(250, 250, 250);
+    padding: 10px 20px;
+  }
+  
+ .TimeRanking th {
+    background-color: rgb(235,235,235);
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e;
+  }
+
+
+  .TimeRanking td, a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e;
+  }
+  
+  .TimeRanking a {
+    text-decoration: none;
+  }
+  
+  .TimeRanking :hover {
+    color: #2980b9;
+  }
+  
+  .TimeRanking:visited {
+    color: #2980b9;
+  }
+  
+  .TimeRanking:nth-child(even) td {
+    background-color: rgba(250, 250, 250);
+  }
+  
+  .TimeRanking:nth-child(odd) td {
+    background-color: rgb(245,245,245);
+  }

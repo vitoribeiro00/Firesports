@@ -1,24 +1,23 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
+import { SearchTorneios } from '../../store/modules/torneio/actions';
 
 import Header from '../../components/Header';
 import Torneio from '../../components/Torneio';
 
 import "../Torneios/styles.css";
 
-import { SearchTorneios } from '../../store/modules/torneio/actions';
-
-import Reactotron from 'reactotron-react-js';
-
-const Torneios = (props) => {
+const Torneios = () => {
     const dispatch = useDispatch();
-    const query = new URLSearchParams(props.location.search);
-    const idJogo = query.get("idJogo");
+
+    const { jogoid } = useParams()
     const torneios = useSelector(state => state.torneio.torneios);
 
     useEffect(() => {
-        if(idJogo > 0){
-            dispatch(SearchTorneios(idJogo));
+        if(jogoid > 0){
+            dispatch(SearchTorneios(jogoid));
         }
     }, [])
 

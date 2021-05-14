@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 
 import './styles.css';
 
-
 class Jogo extends React.Component{    
     
     render() {
         return (
             <div className="conteudoJogo">
-                <Link to={"/torneios?idJogo=" + this.props.idJogo}>
+                <Link to={"/torneios/" + this.props.idJogo}>
                     <div className="imagemJogo">
                         <img src={"/images/jogos/" + this.props.image} alt="Jogo"/>
                     </div>
