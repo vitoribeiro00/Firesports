@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Header from '../../components/Header';
 
 import '../Home/styles.css';
 
 const Home = () => {
+
     return (
         <div className="containerHome">
             <Header />

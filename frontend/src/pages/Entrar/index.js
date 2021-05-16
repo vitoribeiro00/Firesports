@@ -9,7 +9,7 @@ import '../Entrar/styles.css';
 
 const Entrar = ({history}) => {
     const dispatch = useDispatch();
-    let statusCode = useSelector(state => state.auth.statusCode)
+    let usuarioId = useSelector(state => state.auth.id)
 
     const [inputUsuario, setInputUsuario] = useState("")
     const [inputSenha, setInputSenha] = useState("")
@@ -26,16 +26,15 @@ const Entrar = ({history}) => {
     }
 
     useEffect(() => {
-        if (statusCode == 0){
-            Reactotron.log("Falha ao logar no sistema - " + statusCode)
+        if (usuarioId === 0){
+            Reactotron.log("Falha ao logar no sistema - " + usuarioId)
             setMensagemErro("Usuário e Senha errada!")
+        }else{
+            Reactotron.log("Logado com sucesso! - " + usuarioId);
+            history.push("/")
         }
 
-        else if (statusCode === 1) {
-            Reactotron.log("Logado com sucesso! - " + statusCode);
-            history.push("/")}
-        }, [statusCode]
-    )
+    }, [usuarioId])
 
     return (
         <div className="ContainerEntrar">

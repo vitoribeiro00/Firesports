@@ -16,8 +16,8 @@ export function* signIn({ payload }) {
       headers: { 'content-type': 'application/x-www-form-urlencoded' }
     }
     const response = yield call(api.post, 'entrar', params, options);
-    const { StatusCode } = response.data;
-    yield put(signInSuccess(StatusCode));
+    const { Id, Nome, Sobrenome, Data_Nasc, Usuario, Email } = response.data;
+    yield put(signInSuccess(Id, Nome, Sobrenome, Data_Nasc, Usuario, Email));
   } catch (error) {
     yield put(signFailure());
   }

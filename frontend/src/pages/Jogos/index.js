@@ -20,7 +20,7 @@ const Jogos = () => {
 
     return (
         <div className="conteudoJogos">
-            <Header />
+            <Header/>
             <div className="conteudoModalJogos">
                 <div className="conteudoTextoMotivacionalJogos">
                     <p>Coisas incríveis não acontecem dentro da zona de conforto!</p>
