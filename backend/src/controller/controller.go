@@ -1,13 +1,12 @@
 package controller
 
 import (
-	"fmt"
 	"dao"
 	"encoding/json"
-	"net/http"
+	"fmt"
 	"model"
+	"net/http"
 )
-
 
 func EntrarUsuario(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -73,6 +72,15 @@ func BuscarJogos(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(jogos)
 }
 
+func BuscarRank(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET")
+
+	ranks := dao.BuscarRank()
+
+	json.NewEncoder(w).Encode(ranks)
+}
+
 func BuscarTorneios(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "GET")
@@ -81,7 +89,7 @@ func BuscarTorneios(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Metodo ParseForm gerou um erro: %v", err)
 	}
 
-	if (r.Method == "GET") {
+	if r.Method == "GET" {
 		jogoId := r.Form.Get("jogoId")
 		torneios := dao.BuscarTorneios(jogoId)
 
@@ -97,8 +105,7 @@ func BuscarTimes(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Metodo ParseForm gerou um erro: %v", err)
 	}
 
-
-	if (r.Method == "GET") {
+	if r.Method == "GET" {
 		usuarioId := r.Form.Get("usuarioId")
 		times := dao.BuscarTimes(usuarioId)
 		json.NewEncoder(w).Encode(times)
@@ -127,7 +134,6 @@ func AdicionarJogo(w http.ResponseWriter, r *http.Request) {
 	req_qtd_min_usuario := r.PostFormValue("req_qtd_min_usuario")
 	req_qtd_max_usuario := r.PostFormValue("req_qtd_max_usuario")
 
-
 	id := dao.AdicionarJogo(nome, descricao, genero, data_lancamento, req_qtd_min_usuario, req_qtd_max_usuario)
 
 	json.NewEncoder(w).Encode(
@@ -137,7 +143,7 @@ func AdicionarJogo(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
-func DeletarJogo(w http.ResponseWriter, r *http.Request){
+func DeletarJogo(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "DELETE")
 
@@ -152,7 +158,6 @@ func DeletarJogo(w http.ResponseWriter, r *http.Request){
 	}
 
 }
-
 
 func AdicionarTorneio(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -176,7 +181,6 @@ func AdicionarTorneio(w http.ResponseWriter, r *http.Request) {
 	qtd_por_equipe := r.PostFormValue("qtd_por_equipe")
 	qtd_equipe := r.PostFormValue("qtd_equipe")
 
-
 	id := dao.AdicionarTorneio(jogoid, nome, descricao, sala_com_senha, senha, qtd_por_equipe, qtd_equipe)
 
 	json.NewEncoder(w).Encode(
@@ -186,8 +190,7 @@ func AdicionarTorneio(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
-
-func DeletarTorneio(w http.ResponseWriter, r *http.Request){
+func DeletarTorneio(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "DELETE")
 
@@ -202,6 +205,7 @@ func DeletarTorneio(w http.ResponseWriter, r *http.Request){
 	}
 
 }
+
 // Função usada para renderizar o arquivo Index
 // func SelectAllPerson(w http.ResponseWriter, r *http.Request) {
 // 	w.Header().Set("Access-Control-Allow-Origin", "*")

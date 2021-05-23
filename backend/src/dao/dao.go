@@ -82,7 +82,6 @@ func BuscarJogos() []model.Jogo {
 		jogos = append(jogos, jogo)
 	}
 
-
 	defer sqlStatement.Close()
 	return jogos
 }
@@ -107,7 +106,6 @@ func BuscarTorneios(jogoId string) []model.Torneio {
 		CheckErr(err)
 		torneios = append(torneios, torneio)
 	}
-
 
 	defer sqlStatement.Close()
 	return torneios
@@ -149,8 +147,7 @@ func AdicionarJogo(nome string, descricao string, genero string, data_lancamento
 	return int64(id)
 }
 
-
-func AdicionarTorneio(jogoid string, nome string, descricao string, sala_com_senha string, senha string, qtd_por_equipe string, qtd_equipe string) int64{
+func AdicionarTorneio(jogoid string, nome string, descricao string, sala_com_senha string, senha string, qtd_por_equipe string, qtd_equipe string) int64 {
 	db := OpenConnection()
 
 	query := fmt.Sprint("INSERT INTO torneio (jogoid, nome, descricao, sala_com_senha, senha, qtd_por_equipe, qtd_equipe) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING usuarioid")
@@ -159,9 +156,33 @@ func AdicionarTorneio(jogoid string, nome string, descricao string, sala_com_sen
 
 	db.QueryRow(query, jogoid, nome, descricao, sala_com_senha, senha, qtd_por_equipe, qtd_equipe).Scan(&id)
 
-	return int64(id)	
+	return int64(id)
 }
 
+func BuscarRank() []model.Rank {
+	db := OpenConnection()
+
+	query := fmt.Sprint("select count(TV.equipeid) as Vitoria, E.nome from torneio_vencedor as TV inner join torneio as T on TV.torneioid = T.torneioid inner join equipe as E on TV.equipeid = E.equipeid group by E.nome order by Vitoria desc")
+
+	sqlStatement, err := db.Query(query)
+
+	CheckErr(err)
+	defer db.Close()
+
+	var ranks []model.Rank
+
+	for sqlStatement.Next() {
+
+		var rank model.Rank
+
+		err = sqlStatement.Scan(&rank.Vitoria, &rank.Nome)
+		CheckErr(err)
+		ranks = append(ranks, rank)
+	}
+
+	defer sqlStatement.Close()
+	return ranks
+}
 
 // func SqlSelect() ([]model.Pessoa){
 
