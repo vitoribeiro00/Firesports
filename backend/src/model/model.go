@@ -41,6 +41,6 @@ type Response struct {
 
 
 type Time struct {
-	TimeId int64 `json:"TimeId`
+	TimeId int64 `json:"TimeId"`
 	Nome string `json:"Nome"`
 }
