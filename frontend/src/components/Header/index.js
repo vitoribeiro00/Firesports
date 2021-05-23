@@ -32,7 +32,8 @@ export default function Header() {
                         </>
                     ) : (
                         <div className="perfilMenu">
-                            <img src="/images/avatar.png" alt={usuario} className="imagemAvatar"/>
+                            <Link to="/perfil"><img src="/images/avatar.png" alt={usuario} className="imagemAvatar"/></Link>
+
                             <p onClick={logout}>Sair</p>
                         </div>
                     )

@@ -1,8 +1,7 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  id: 0,
-  nome: ""
+  time: [],
 };
 
 
@@ -14,8 +13,8 @@ export default function time(state = INITIAL_STATE, action) {
       }
 
       case '@auth/CARREGAR_TIME': {
-        draft.id = action.payload.id;
-        draft.nome = action.payload.nome;
+        draft.time = action.payload.time;
+        break;
       }
       default:
     }

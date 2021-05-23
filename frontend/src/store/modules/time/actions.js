@@ -5,9 +5,9 @@ export function buscarTime(usuarioid) {
     };
 }
 
-export function carregarTime(id, nome) {
+export function carregarTime(time) {
     return {
       type: '@auth/CARREGAR_TIME',
-      payload: { id, nome },
+      payload: { time },
     };
 }

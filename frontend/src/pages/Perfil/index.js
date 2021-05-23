@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { buscarTime } from '../../store/modules/time/actions';
 
 import './styles.css';
 
 const Perfil = () => {
+    const dispatch = useDispatch();
     const usuarioId = useSelector(state => state.auth.id);
 
-    const idTime = useSelector(state => state.time.id);
-    const nomeTime = useSelector(state => state.time.nome);
+    const times = useSelector(state => state.time.time);
 
+    useEffect(() => {
+        if(usuarioId > 0){
+            dispatch(buscarTime(usuarioId));
+        }
+
+    }, [])
 
     return(
         <div className="containerPerfil">
             <Header />
 
             <div className="conteudoPerfil">
-                <h1>{usuarioId}</h1>
+                <h1>{localStorage.getItem("userLogged")}</h1>
                 <div>
                     <h1 className="meusTimesPerfil">Meus times</h1>
                 </div>
@@ -26,9 +34,11 @@ const Perfil = () => {
                     <button className="btnAdicionarTime">+</button>
                 </div>
 
-                <h1>{idTime}</h1>
-                <h1>{nomeTime}</h1>
-                
+                {
+                    times.map(t => (
+                        <h1>{t.Nome}</h1>
+                    ))
+                }
             </div>
         </div>
 

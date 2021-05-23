@@ -4,19 +4,19 @@ import api from '../../../services/api';
 
 import { carregarTime } from './actions';
 
+import Reactotron from 'reactotron-react-js';
+
 export function* buscarTime({ payload }) {
   try {
-    const { usuarioid } = payload;
+    const { usuarioId } = payload;
 
-    const params = new URLSearchParams()
-    params.append("usuarioid", usuarioid)
+    const url_path = "time?usuarioId=" + usuarioId
 
-    const options = {
-      headers: { 'content-type': 'application/x-www-form-urlencoded' }
-    }
-    const response = yield call(api.post, 'time', params, options);
-    const { Id, Nome } = response.data;
-    yield put(carregarTime(Id, Nome));
+    const response = yield call(api.get, url_path);
+
+    Reactotron.log(response)
+    const data = response.data;
+    yield put(carregarTime(data));
   } catch (error) {
     // passs
   }

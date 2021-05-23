@@ -16,8 +16,12 @@ export function* signIn({ payload }) {
       headers: { 'content-type': 'application/x-www-form-urlencoded' }
     }
     const response = yield call(api.post, 'entrar', params, options);
-    const { Id, Nome, Sobrenome, Data_Nasc, Usuario, Email } = response.data;
-    yield put(signInSuccess(Id, Nome, Sobrenome, Data_Nasc, Usuario, Email));
+
+    if(response.data){
+        const { Id, Nome, Sobrenome, Data_Nasc, Usuario, Email } = response.data;
+        yield put(signInSuccess(Id, Nome, Sobrenome, Data_Nasc, Usuario, Email));
+        localStorage.setItem("userLogged", Usuario);
+    }
   } catch (error) {
     yield put(signFailure());
   }
