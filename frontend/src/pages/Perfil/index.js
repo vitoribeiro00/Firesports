@@ -5,17 +5,24 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { buscarTime } from '../../store/modules/time/actions';
 
+import Reactotron from 'reactotron-react-js';
+
 import './styles.css';
 
-const Perfil = () => {
+const Perfil = ( { history } ) => {
     const dispatch = useDispatch();
-    const usuarioId = useSelector(state => state.auth.id);
-
     const times = useSelector(state => state.time.time);
 
     useEffect(() => {
-        if(usuarioId > 0){
-            dispatch(buscarTime(usuarioId));
+
+        if(!localStorage.getItem("userLogged")) {
+            history.push("/entrar")
+        }
+        if(localStorage.getItem("userIdLogged")){
+            if(localStorage.getItem("userIdLogged") > 0){
+                Reactotron.log(localStorage.getItem("userIdLogged"))
+                dispatch(buscarTime(localStorage.getItem("userIdLogged")));
+            }
         }
 
     }, [])

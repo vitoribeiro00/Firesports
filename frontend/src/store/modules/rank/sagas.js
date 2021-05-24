@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { CarregarTorneios } from './actions';
+import { CarregarRank } from './actions';
 
 
 import Reactotron from 'reactotron-react-js';

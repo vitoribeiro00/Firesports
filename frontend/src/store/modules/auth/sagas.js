@@ -21,6 +21,7 @@ export function* signIn({ payload }) {
         const { Id, Nome, Sobrenome, Data_Nasc, Usuario, Email } = response.data;
         yield put(signInSuccess(Id, Nome, Sobrenome, Data_Nasc, Usuario, Email));
         localStorage.setItem("userLogged", Usuario);
+        localStorage.setItem("userIdLogged", Id)
     }
   } catch (error) {
     yield put(signFailure());
