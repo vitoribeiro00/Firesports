@@ -25,5 +25,5 @@ export function* SearchTorneios({ payload }) {
 }
 
 export function* torneioSagas() {
-  yield takeLatest('@auth/SEARCH_TORNEIOS', SearchTorneios);
+  yield takeLatest('@torneio/SEARCH_TORNEIOS', SearchTorneios);
 }

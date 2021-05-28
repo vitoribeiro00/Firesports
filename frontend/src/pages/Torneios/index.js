@@ -8,6 +8,7 @@ import Header from '../../components/Header';
 import Torneio from '../../components/Torneio';
 
 import "../Torneios/styles.css";
+import ModalTorneio from "../../components/ModalTorneio";
 
 const Torneios = () => {
     const dispatch = useDispatch();
@@ -34,10 +35,11 @@ const Torneios = () => {
                     {torneios &&
                         torneios.map(
                             torneio => (
-                                <Torneio nome={torneio.nome} />
+                                <Torneio nome={torneio.Nome} torneioid={torneio.TorneioId}/>
                             )
                         )}
                 </div>
+                <ModalTorneio />
             </div>
         </div>
     );

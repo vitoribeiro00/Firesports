@@ -42,7 +42,7 @@ const Perfil = ( { history } ) => {
                 </div>
 
                 {
-                    times.map(t => (
+                    times && times.map(t => (
                         <h1>{t.Nome}</h1>
                     ))
                 }

@@ -1,18 +1,30 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  torneios: []
+  torneios: [],
+  openModal: false,
+  clickedTorneioId: 0,
 };
 
 
 export default function torneio(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case '@auth/SEARCH_TORNEIOS': {
+      case '@torneio/SEARCH_TORNEIOS': {
         break;
       }
-      case '@auth/CARREGAR_TORNEIOS': {
+      case '@torneio/CARREGAR_TORNEIOS': {
         draft.torneios = action.payload.torneios;
+        break;
+      }
+      case '@torneio/ABRIR_MODAL_TORNEIO': {
+        draft.openModal = true;
+        draft.clickedTorneioId = action.payload.torneioid;
+        break;
+      }
+      case '@torneio/FECHAR_MODAL_TORNEIO': {
+        draft.openModal = false;
+        draft.clickedTorneioId = 0;
         break;
       }
       default:
