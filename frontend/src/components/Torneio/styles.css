@@ -7,6 +7,7 @@
     width: calc((100% / 4) - 2rem); /* calco para descontar a margem da largura do box se aumenta a marge tem que ajustar aqui tb */
     height: 400px;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .textoTorneio {

@@ -1,26 +1,29 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
+import { AbrirModalTorneio } from '../../store/modules/torneio/actions';
 
 import { Link } from 'react-router-dom';
 
 import './styles.css';
 
+export default function Torneio(props) {
+    const dispatch = useDispatch();
+    const nome = props.nome;
+    const torneioid = props.torneioid;
 
-class Torneio extends React.Component {
-
-    render() {
-        return (
-            <div className="conteudoTorneio">
-                <img className="ImagemJogo" src={"/images/sova-valorant.jpg"} />
-                <div className="textoTorneio">
-                    <p>{this.props.nome}</p>
-                    <p className="textoTitulo">Título</p>
-                    <p>Pessoas Jogando: 20</p>
-                    <p>Torneio Nº: 1</p>
-                </div>
-
-            </div>
-        )
+    const openModal = () => {
+        console.log("Puta que pariu: " + nome)
+        dispatch(AbrirModalTorneio(torneioid))
     }
-}
 
-export default Torneio;
+    return (
+        <div className="conteudoTorneio" onClick={openModal}>
+            <img className="ImagemJogo" src={"/images/sova-valorant.jpg"} />
+            <div className="textoTorneio">
+                <p className="textoTitulo">Título</p>
+                <p>100 pessoas jogando</p>
+                <p>20 torneios</p>
+            </div>
+        </div>
+    );
+} 
