@@ -22,3 +22,7 @@ yarn-error.log*
 package-lock.json
 
 backend/src/github.com/modules/gopostgres/dbconfig/driverConfig.go
+backend/bin/gopls.exe
+backend/pkg
+backend/src/github.com/lib/pq
+backend/pkg/sumdb/sum.golang.org/latest
