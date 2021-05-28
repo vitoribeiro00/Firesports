@@ -1,16 +1,29 @@
-@keyframes hoverImagemJogo {
+@keyframes camadaImagem {
     from {opacity: 0;}
     to {opacity: 0.5;}
 }
 
-.wrapperImagemJogo{
-    background-color: purple;
-    opacity: 0;
+.imagemJogo {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    background-color: springgreen;
 }
 
-.wrapperImagemJogo:hover{
-    animation-name: hoverImagemJogo;
+.camadaImagem {
+    position: absolute;
+    top: 0;
+    background-color: purple; 
+    opacity: 0;
+    width:100%;
+    height: 100%;
+    color: #FFF;
+}
+
+.camadaImagem:hover {
+    animation-name: camadaImagem;
     animation-duration: 1s;
+    background-color: purple;
 }
 
 .conteudoJogo {
@@ -24,11 +37,6 @@
     flex-direction: column;
 }
 
-.imagemJogo {
-    width: 100%;
-    height: 80%;
-    background-color: springgreen;
-}
 
 .imagemJogo img {
     width: 100%;

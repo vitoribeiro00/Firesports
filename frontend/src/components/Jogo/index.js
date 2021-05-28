@@ -10,10 +10,9 @@ class Jogo extends React.Component{
         return (
             <div className="conteudoJogo">
                 <Link to={"/torneios/" + this.props.idJogo}>
-                    <div className="wrapperImagemJogo">
-                        <div className="imagemJogo">
-                            <img src={"/images/jogos/" + this.props.image} alt="Jogo"/>
-                        </div>
+                    <div className="imagemJogo">
+                        <img src={"/images/jogos/" + this.props.image} alt="Jogo"/>
+                        <div className="camadaImagem"></div>
                     </div>
                     <div className="textoJogo">
                         <p>{this.props.nome}</p>

@@ -17,59 +17,58 @@ export default function ModalTorneio() {
     }
     return (
         <div className={openModal ? "conteudoModalTorneio" : "conteudoModalTorneio hidden"}>
-            <div className="fundo">
-                <div className="modal">
-                    <div className="modalHeader">
+            <div className="fundoModalTorneio">
+                <div className="modalModalTorneio">
+                    <div className="modalHeaderModalTorneio">
                         <div>
                             Torneio: {clickedTorneioId}
                         </div>
-                        <div className="fecharModal" onClick={closeModal}>
+                        <div className="fecharModalTorneio" onClick={closeModal}>
                             X
                         </div>
                     </div>
 
-                    <div className="conteudoModal">
-                        <section id="bracket">
-                            <div className="container">
-                            <div className="split split-one">
-                                <div className="round round-one current">
-                                <div className="round-details">Round 1<br /><span className="date">March 16</span></div>
-                                    <ul className="matchup">
-                                        <li className="team team-top">TIME A<span className="score">76</span></li>
-                                        <li className="team team-bottom">TIME B<span className="score">82</span></li>
+                    <div className="conteudoModalModalTorneio">
+                        <section id="suporteModalTorneio">
+                            <div className="conteudoQuebraChaveTorneio">
+                            <div className="quebraChaveTorneioModalTorneio split-one">
+                                <div className="faseModalTorneio faseModalTorneio-one current">
+                                <div className="datalhesModalTorneio">FASE 1<br /><span className="dataPartidaModalTorneio">26/05/2021</span></div>
+                                    <ul className="partidaModalTorneio">
+                                        <li className="timeModalTroneio timeModalTroneio-cima">TIME A<span className="pontuacaoModalTorneio">76</span></li>
+                                        <li className="timeModalTroneio timeModalTroneio-baixa">TIME B<span className="pontuacaoModalTorneio">82</span></li>
                                     </ul>
-                                    <ul className="matchup">
-                                        <li className="team team-top">TIME C<span className="score">64</span></li>
-                                        <li className="team team-bottom">TIME D<span className="score">56</span></li>
+                                    <ul className="partidaModalTorneio">
+                                        <li className="timeModalTroneio timeModalTroneio-cima">TIME C<span className="pontuacaoModalTorneio">64</span></li>
+                                        <li className="timeModalTroneio timeModalTroneio-baixa">TIME D<span className="pontuacaoModalTorneio">56</span></li>
                                     </ul>
-                                    <ul className="matchup">
-                                        <li className="team team-top">TIME E<span className="score">68</span></li>
-                                        <li className="team team-bottom">TIME F<span className="score">54</span></li>
+                                    <ul className="partidaModalTorneio">
+                                        <li className="timeModalTroneio timeModalTroneio-cima">TIME E<span className="pontuacaoModalTorneio">68</span></li>
+                                        <li className="timeModalTroneio timeModalTroneio-baixa">TIME F<span className="pontuacaoModalTorneio">54</span></li>
                                     </ul>
-                                    <ul className="matchup">
-                                        <li className="team team-top">TIME G<span className="score">68</span></li>
-                                        <li className="team team-bottom">TIME H<span className="score">54</span></li>
-                                    </ul>
-                                    
+                                    <ul className="partidaModalTorneio">
+                                        <li className="timeModalTroneio timeModalTroneio-cima">TIME G<span className="pontuacaoModalTorneio">68</span></li>
+                                        <li className="timeModalTroneio timeModalTroneio-baixa">TIME H<span className="pontuacaoModalTorneio">54</span></li>
+                                    </ul>                                    
                                 </div>
                         
-                                <div className="round round-two">
-                                <div className="round-details">Round 2<br /><span className="date">March 18</span></div>
-                                <ul className="matchup">
-                                    <li className="team team-top">TIME A<span className="score">35</span></li>
-                                    <li className="team team-bottom">TIME C<span className="score">42</span></li>
+                                <div className="faseModalTorneio faseModalTorneio-two">
+                                <div className="datalhesModalTorneio">FASE 2<br /><span className="dataPartidaModalTorneio">27/05/2021</span></div>
+                                <ul className="partidaModalTorneio">
+                                    <li className="timeModalTroneio timeModalTroneio-cima">TIME A<span className="pontuacaoModalTorneio">35</span></li>
+                                    <li className="timeModalTroneio timeModalTroneio-baixa">TIME C<span className="pontuacaoModalTorneio">42</span></li>
                                 </ul>
-                                <ul className="matchup">
-                                    <li className="team team-top">TIME E<span className="score">25</span></li>
-                                    <li className="team team-bottom">TIME H<span className="score">28</span></li>
+                                <ul className="partidaModalTorneio">
+                                    <li className="timeModalTroneio timeModalTroneio-cima">TIME E<span className="pontuacaoModalTorneio">25</span></li>
+                                    <li className="timeModalTroneio timeModalTroneio-baixa">TIME H<span className="pontuacaoModalTorneio">28</span></li>
                                 </ul>
                                 </div>
                         
-                                <div className="round round-three">
-                                <div className="round-details">Round 3<br /><span className="date">March 22</span></div>
-                                <ul className="matchup">
-                                    <li className="team team-top">TIME A<span className="score">12</span></li>
-                                    <li className="team team-bottom">TIME E<span className="score">8</span></li>
+                                <div className="faseModalTorneio faseModalTorneio-three">
+                                <div className="datalhesModalTorneio">FASE 3<br /><span className="dataPartidaModalTorneio">28/05/2021</span></div>
+                                <ul className="partidaModalTorneio">
+                                    <li className="timeModalTroneio timeModalTroneio-cima">TIME A<span className="pontuacaoModalTorneio">12</span></li>
+                                    <li className="timeModalTroneio timeModalTroneio-baixa">TIME E<span className="pontuacaoModalTorneio">8</span></li>
                                 </ul>
                                 </div>
                             </div>

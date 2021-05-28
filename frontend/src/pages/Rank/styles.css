@@ -33,7 +33,7 @@
     margin-top: 40px;
 }
 
-..TextoTimeRanking{
+.TextoTimeRanking{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,7 +75,7 @@
   }
 
 
-  .TimeRanking td, a {
+  .TimeRanking td {
     font-size: 14px;
     font-weight: 600;
     color: #34495e;
