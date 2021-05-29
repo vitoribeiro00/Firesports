@@ -20,9 +20,11 @@ export default function Torneio(props) {
         <div className="conteudoTorneio" onClick={openModal}>
             <img className="ImagemJogo" src={"/images/sova-valorant.jpg"} />
             <div className="textoTorneio">
-                <p className="textoTitulo">Título</p>
-                <p>100 pessoas jogando</p>
-                <p>20 torneios</p>
+                <p className="textoTitulo">{props.nome}</p>
+                <p>{props.descricao}</p>
+                <p>Quantidade por Equipe:{props.qtd_por_equipe}</p>
+                <p>Quantidade de Equipe:{props.qtd_equipe}</p>
+                <p>Data Criação:{props.data_criacao}</p>
             </div>
         </div>
     );

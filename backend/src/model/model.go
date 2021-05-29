@@ -33,6 +33,7 @@ type Torneio struct {
 	Senha          string `json:"Senha"`
 	Qtd_por_equipe int64  `json:"Qtd_por_equipe"`
 	Qtd_equipe     int64  `json:"Qtd_equipe"`
+	Data_criacao   string `json:"Data_criacao"`
 }
 
 type Response struct {
@@ -40,8 +41,8 @@ type Response struct {
 }
 
 type Time struct {
-	TimeId int64 `json:"TimeId"`
-	Nome string `json:"Nome"`
+	TimeId int64  `json:"TimeId"`
+	Nome   string `json:"Nome"`
 }
 
 type Rank struct {

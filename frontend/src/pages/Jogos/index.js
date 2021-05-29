@@ -29,7 +29,7 @@ const Jogos = () => {
 
                 <div className="listaDeJogos">
                     {jogos.map(jogo => (
-                        <Jogo className="jogoJogos" idJogo={jogo.JogoId} nome={jogo.Nome} image={jogo.Image}/>
+                        <Jogo className="jogoJogos" idJogo={jogo.JogoId} nome={jogo.Nome} image={jogo.Image} descricao={jogo.Descricao} genero={jogo.Genero}/>
                     ))}
                 </div>
             </div>

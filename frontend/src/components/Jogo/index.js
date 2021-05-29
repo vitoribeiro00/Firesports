@@ -16,8 +16,8 @@ class Jogo extends React.Component{
                     </div>
                     <div className="textoJogo">
                         <p>{this.props.nome}</p>
-                        <p>100 pessoas jogando</p>
-                        <p>20 torneios</p>
+                        <p>{this.props.descricao}</p>
+                        <p>{this.props.genero}</p>
                     </div>
                 </Link>
             </div>
