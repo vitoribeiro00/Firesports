@@ -35,7 +35,7 @@ const Torneios = () => {
                     {torneios &&
                         torneios.map(
                             torneio => (
-                                <Torneio nome={torneio.Nome} torneioid={torneio.TorneioId}/>
+                                <Torneio nome={torneio.Nome} torneioid={torneio.TorneioId} data_criacao={torneio.Data_criacao} descricao= {torneio.Descricao} qtd_por_equipe= {torneio.Qtd_por_equipe} qtd_equipe= {torneio.Qtd_equipe}/>
                             )
                         )}
                 </div>

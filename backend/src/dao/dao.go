@@ -89,7 +89,7 @@ func BuscarJogos() []model.Jogo {
 func BuscarTorneios(jogoId string) []model.Torneio {
 	db := OpenConnection()
 
-	query := fmt.Sprint("SELECT torneioid, nome, descricao, sala_com_senha, senha, qtd_por_equipe, qtd_equipe FROM torneio where jogoid=" + jogoId + " ORDER BY nome ASC")
+	query := fmt.Sprint("SELECT torneioid, nome, descricao, sala_com_senha, TO_CHAR(data_criacao :: DATE, 'dd/mm/yyyy'), senha, qtd_por_equipe, qtd_equipe FROM torneio where jogoid=" + jogoId + " ORDER BY nome ASC")
 
 	sqlStatement, err := db.Query(query)
 
@@ -102,7 +102,7 @@ func BuscarTorneios(jogoId string) []model.Torneio {
 
 		var torneio model.Torneio
 
-		err = sqlStatement.Scan(&torneio.TorneioId, &torneio.Nome, &torneio.Descricao, &torneio.Sala_com_senha, &torneio.Senha, &torneio.Qtd_por_equipe, &torneio.Qtd_equipe)
+		err = sqlStatement.Scan(&torneio.TorneioId, &torneio.Nome, &torneio.Descricao, &torneio.Sala_com_senha, &torneio.Data_criacao, &torneio.Senha, &torneio.Qtd_por_equipe, &torneio.Qtd_equipe)
 		CheckErr(err)
 		torneios = append(torneios, torneio)
 	}
