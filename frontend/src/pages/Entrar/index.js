@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { signInRequest } from '../../store/modules/auth/actions';
 
@@ -29,18 +30,25 @@ const Entrar = ({history}) => {
         if (usuarioId === 0){
             Reactotron.log("Falha ao logar no sistema - " + usuarioId)
             setMensagemErro("Usuário e Senha errada!")
-        }else{
+        }else if (usuarioId > 0){
             Reactotron.log("Logado com sucesso! - " + usuarioId);
             history.push("/")
         }
 
     }, [usuarioId])
 
+    const handleHome = () => {
+        console.log("Clicou!")
+        history.push("/")
+    }
+
     return (
         <div className="ContainerEntrar">
+
             <div className="ContainerImageEntrar">
                 <img src="/images/sova-valorant.jpg" alt="Meu champion do vava" className="ImagemFundoEntrar"/>
             </div>
+            <div className="logoEntrar" onClick={handleHome}></div>
             <div className="ContainerConteudoEntrar">
                 <div className="ModalEntrar">
                     <div className="ConteudoFormularioEntrar">

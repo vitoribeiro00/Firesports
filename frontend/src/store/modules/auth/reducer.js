@@ -1,7 +1,7 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-  id: 0,
+  id: -1,
   nome: "",
   sobrenome: "",
   data_nasc: "",
@@ -29,7 +29,7 @@ export default function auth(state = INITIAL_STATE, action) {
         break;
       }
       case '@auth/SIGN_LOGGOUT': {
-        draft.id = 0;
+        draft.id = -1;
         draft.nome = "";
         draft.sobrenome = "";
         draft.data_nasc = "";

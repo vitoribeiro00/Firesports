@@ -25,8 +25,6 @@ func EntrarUsuario(w http.ResponseWriter, r *http.Request) {
 	usuario := r.PostFormValue("usuario")
 	senha := r.PostFormValue("senha")
 
-	fmt.Println(usuario)
-
 	results := dao.BuscarUsuario(usuario, senha)
 	w.Header().Set("Content-Type", "application/json")
 
@@ -111,6 +109,22 @@ func BuscarTimes(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(times)
 	}
 
+}
+
+func BuscarTorneioPartida(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET")
+
+	if err := r.ParseForm(); err != nil {
+		fmt.Fprintf(w, "Metodo ParseForm gerou um erro: %v", err)
+	}
+
+	if r.Method == "GET" {
+		torneioId := r.Form.Get("torneioid")
+		
+		torneio_partidas := dao.BuscarTorneioPartida(torneioId)
+		json.NewEncoder(w).Encode(torneio_partidas)
+	}
 }
 
 func AdicionarJogo(w http.ResponseWriter, r *http.Request) {

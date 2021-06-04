@@ -184,6 +184,72 @@ func BuscarRank() []model.Rank {
 	return ranks
 }
 
+
+func BuscarTorneioPartida(idTorneio string) []model.TorneioPartidas {
+	db := OpenConnection()
+	query := fmt.Sprint("SELECT DISTINCT fase FROM partida_torneio WHERE torneioid = " + idTorneio)
+	sqlStatement, err := db.Query(query)
+
+	CheckErr(err)
+	defer db.Close()
+
+	var fases []model.Fase
+
+	for sqlStatement.Next() {
+
+		var fase model.Fase
+
+		err = sqlStatement.Scan(
+			&fase.Numero_Fase, 
+		)
+
+		CheckErr(err)
+		fases = append(fases, fase)
+	}
+
+	var torneioPartidas []model.TorneioPartidas
+	for _, fase := range fases {
+		db := OpenConnection()
+		query := fmt.Sprint("SELECT T.nome, T.descricao, TO_CHAR(T.data_criacao, 'DD/MM/YYYY') as data_criacao, PT.partida, TO_CHAR(PT.data_partida, 'DD/MM/YYYY') as data_partida,  ( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.timevencedorid = _E.equipeid WHERE _PT.timevencedorid = PT.timevencedorid) AS time_vencedor, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_1_id), '-') AS time_A, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_2_id), '-') AS time_B,  COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_3_id), '-') AS time_C, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_4_id), '-') AS time_D, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_5_id), '-') AS time_E FROM partida_torneio AS PT  INNER JOIN torneio AS T ON PT.torneioid = T.torneioid  WHERE PT.torneioid = " + idTorneio + " and fase= " + fase.Numero_Fase + " ORDER BY PT.partida, PT.fase;")
+		sqlStatement, err := db.Query(query)
+
+		CheckErr(err)
+		defer db.Close()
+
+		var partidas []model.Partida
+
+		for sqlStatement.Next() {
+
+			var partida model.Partida
+
+			err = sqlStatement.Scan(
+				&partida.Nome_Torneio, 
+				&partida.Descricao_Torneio, 
+				&partida.Data_Criacao_Torneio, 
+				&partida.Partida_Torneio, 
+				&partida.Data_Partida_Torneio, 
+				&partida.Time_Vencedor, 
+				&partida.Time_a,
+				&partida.Time_b,
+				&partida.Time_c,
+				&partida.Time_d,
+				&partida.Time_e,
+			)
+
+			CheckErr(err)
+			partidas = append(partidas, partida)
+		}
+		var torneioPartida model.TorneioPartidas
+
+		torneioPartida.Numero_Fase = fase.Numero_Fase
+		torneioPartida.Partidas = append(torneioPartida.Partidas, partidas...)
+
+		torneioPartidas = append(torneioPartidas, torneioPartida)
+	}
+
+	return torneioPartidas
+}
+
 // func SqlSelect() ([]model.Pessoa){
 
 //     db := OpenConnection()

@@ -48,3 +48,26 @@ type Rank struct {
 	Vitoria int64  `json:"Vitoria"`
 	Nome    string `json:"Nome"`
 }
+
+type Fase struct {
+	Numero_Fase string `json:"Numero_Fase"`
+}
+
+type Partida struct {
+	Nome_Torneio string `json:"Nome"`
+	Descricao_Torneio string `json:"Descricao"`
+	Data_Criacao_Torneio string `json:"Data_Criacao"`
+	Partida_Torneio int `json:"Partida"`
+	Data_Partida_Torneio string `json:"Data_Partida"`
+	Time_Vencedor string `json:"Time_Vencedor"`
+	Time_a string `json:"time_a"`
+	Time_b string `json:"time_b"`
+	Time_c string `json:"time_c"`
+	Time_d string `json:"time_d"`
+	Time_e string `json:"time_e"`
+}
+
+type TorneioPartidas struct {
+	Numero_Fase string `json:"Numero_Fase"`
+	Partidas []Partida `json:"Partidas"`
+}

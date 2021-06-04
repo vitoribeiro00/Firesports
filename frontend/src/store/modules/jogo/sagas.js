@@ -12,7 +12,6 @@ export function* SearchJogos() {
 
     const response = yield call(api.get, 'jogos');
     const data = response.data;
-    Reactotron.log(data)
     yield put(CarregarJogos(data));
   } catch (error) {
     Reactotron.log("FALHA AO BUSCAR JOGOS")

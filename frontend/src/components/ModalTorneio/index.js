@@ -8,13 +8,15 @@ import './styles.css';
 
 export default function ModalTorneio() {
     const dispatch = useDispatch();
-    const torneios = useSelector(state => state.torneio.torneios); 
+    const torneios = useSelector(state => state.torneio.torneios);
+    const partidasTorneio = useSelector(state => state.torneio.partidasTorneio)
     const openModal = useSelector(state => state.torneio.openModal); 
     const clickedTorneioId = useSelector(state => state.torneio.clickedTorneioId); 
 
     const closeModal = () => {
         dispatch(FecharModalTorneio())
     }
+
     return (
         <div className={openModal ? "conteudoModalTorneio" : "conteudoModalTorneio hidden"}>
             <div className="fundoModalTorneio">
@@ -31,47 +33,19 @@ export default function ModalTorneio() {
                     <div className="conteudoModalModalTorneio">
                         <section id="suporteModalTorneio">
                             <div className="conteudoQuebraChaveTorneio">
-                            <div className="quebraChaveTorneioModalTorneio split-one">
-                                <div className="faseModalTorneio faseModalTorneio-one current">
-                                <div className="datalhesModalTorneio">FASE 1<br /><span className="dataPartidaModalTorneio">26/05/2021</span></div>
-                                    <ul className="partidaModalTorneio">
-                                        <li className="timeModalTroneio timeModalTroneio-cima">TIME A<span className="pontuacaoModalTorneio">76</span></li>
-                                        <li className="timeModalTroneio timeModalTroneio-baixa">TIME B<span className="pontuacaoModalTorneio">82</span></li>
-                                    </ul>
-                                    <ul className="partidaModalTorneio">
-                                        <li className="timeModalTroneio timeModalTroneio-cima">TIME C<span className="pontuacaoModalTorneio">64</span></li>
-                                        <li className="timeModalTroneio timeModalTroneio-baixa">TIME D<span className="pontuacaoModalTorneio">56</span></li>
-                                    </ul>
-                                    <ul className="partidaModalTorneio">
-                                        <li className="timeModalTroneio timeModalTroneio-cima">TIME E<span className="pontuacaoModalTorneio">68</span></li>
-                                        <li className="timeModalTroneio timeModalTroneio-baixa">TIME F<span className="pontuacaoModalTorneio">54</span></li>
-                                    </ul>
-                                    <ul className="partidaModalTorneio">
-                                        <li className="timeModalTroneio timeModalTroneio-cima">TIME G<span className="pontuacaoModalTorneio">68</span></li>
-                                        <li className="timeModalTroneio timeModalTroneio-baixa">TIME H<span className="pontuacaoModalTorneio">54</span></li>
-                                    </ul>                                    
+                                <div className="quebraChaveTorneioModalTorneio split-one">
+                                    
+                                    {
+                                        partidasTorneio && partidasTorneio.map(f => 
+                                            <div className="faseModalTorneio"> 
+                                                <div className="datalhesModalTorneio">FASE {f.Numero_Fase}<br /><span className="dataPartidaModalTorneio">-</span></div>
+                                                {
+                                                    f.Partidas.map(p => <ul className="partidaModalTorneio"><li className="timeModalTroneio timeModalTroneio-cima">{p.time_a}</li><li className="timeModalTroneio timeModalTroneio-baixa">{p.time_b}</li></ul>)
+                                                }
+                                            </div>
+                                        )
+                                    }
                                 </div>
-                        
-                                <div className="faseModalTorneio faseModalTorneio-two">
-                                <div className="datalhesModalTorneio">FASE 2<br /><span className="dataPartidaModalTorneio">27/05/2021</span></div>
-                                <ul className="partidaModalTorneio">
-                                    <li className="timeModalTroneio timeModalTroneio-cima">TIME A<span className="pontuacaoModalTorneio">35</span></li>
-                                    <li className="timeModalTroneio timeModalTroneio-baixa">TIME C<span className="pontuacaoModalTorneio">42</span></li>
-                                </ul>
-                                <ul className="partidaModalTorneio">
-                                    <li className="timeModalTroneio timeModalTroneio-cima">TIME E<span className="pontuacaoModalTorneio">25</span></li>
-                                    <li className="timeModalTroneio timeModalTroneio-baixa">TIME H<span className="pontuacaoModalTorneio">28</span></li>
-                                </ul>
-                                </div>
-                        
-                                <div className="faseModalTorneio faseModalTorneio-three">
-                                <div className="datalhesModalTorneio">FASE 3<br /><span className="dataPartidaModalTorneio">28/05/2021</span></div>
-                                <ul className="partidaModalTorneio">
-                                    <li className="timeModalTroneio timeModalTroneio-cima">TIME A<span className="pontuacaoModalTorneio">12</span></li>
-                                    <li className="timeModalTroneio timeModalTroneio-baixa">TIME E<span className="pontuacaoModalTorneio">8</span></li>
-                                </ul>
-                                </div>
-                            </div>
                             </div>
                         </section>
                     </div>

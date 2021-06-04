@@ -5,8 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { buscarTime } from '../../store/modules/time/actions';
 
-import Reactotron from 'reactotron-react-js';
-
 import './styles.css';
 
 const Perfil = ( { history } ) => {
@@ -20,7 +18,6 @@ const Perfil = ( { history } ) => {
         }
         if(localStorage.getItem("userIdLogged")){
             if(localStorage.getItem("userIdLogged") > 0){
-                Reactotron.log(localStorage.getItem("userIdLogged"))
                 dispatch(buscarTime(localStorage.getItem("userIdLogged")));
             }
         }

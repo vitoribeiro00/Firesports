@@ -22,7 +22,6 @@ export default function Header() {
             </div>
             <div className="conteudoMenu">
                 <Link to="/rank"><div className="rankMenu">Rank</div></Link>
-                <Link to="/comunidade"><div className="comunidadeMenu">Comunidade</div></Link>
                 <Link to="/jogos"><div className="jogosMenu">Jogos</div></Link>
                 {
                     usuario === "" ? (

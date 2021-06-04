@@ -25,6 +25,14 @@
     flex-direction: column;
 }
 
+.logoEntrar {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    margin: 10px;
+}
+
 .ContainerConteudoEntrar div.ModalEntrar {
     display: flex;
     width: 400px;

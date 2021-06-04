@@ -12,7 +12,6 @@ export function* SearchRank() {
 
     const response = yield call(api.get,'rank');
     const data = response.data;
-    Reactotron.log(data)
     yield put(CarregarRank(data));
   } catch (error) {
     Reactotron.log("FALHA AO BUSCAR RANK")

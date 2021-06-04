@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
-import { AbrirModalTorneio } from '../../store/modules/torneio/actions';
+import { AbrirModalTorneio, SearchPartidasTorneio } from '../../store/modules/torneio/actions';
 
 import { Link } from 'react-router-dom';
-
+import Reactotron from 'reactotron-react-js';
 import './styles.css';
 
 export default function Torneio(props) {
@@ -12,7 +12,7 @@ export default function Torneio(props) {
     const torneioid = props.torneioid;
 
     const openModal = () => {
-        console.log("Puta que pariu: " + nome)
+        dispatch(SearchPartidasTorneio(torneioid))
         dispatch(AbrirModalTorneio(torneioid))
     }
 
