@@ -37,7 +37,10 @@ const Torneios = () => {
                     <p>Supere seus limites, e fique no topo!</p>
                 </div>
                 <div className="conteudoCriarTorneio">
-                    <button onClick={abrirModalCriarTorneio} id="botaoCriarTorneio">Criar Torneio</button>
+                    <div className="botaoCriarTorneio" onClick={abrirModalCriarTorneio}>
+                        <p>Criar Torneio</p>
+                    </div>
+                    {/* <button onClick={abrirModalCriarTorneio} id="botaoCriarTorneio">Criar Torneio</button> */}
                     <ModalCriacaoTorneio />
                 </div>
 

@@ -10,18 +10,29 @@
     padding-left: 175px;
     background-color: rgba(211, 211, 211, 0.8);
     z-index: 1000;
-  }
+}
+
+.conteudoModalPreenchimentoCriarTorneio {
+  width: 100%;
+  margin: 10px;
+}
   
+.conteudoCriarTorneio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-  .hidden {
-    display: none;
-  }
+.hidden {
+  display: none;
+}
 
-  .fundoModalCriarTorneio {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
+.fundoModalCriarTorneio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
 }
 
 .modalModalCriarTorneio {
@@ -43,4 +54,26 @@
   text-align: right;
   justify-content: right;
   cursor: pointer;
+}
+
+.botaoCriarTorneio {
+  display: flex;
+  width: 150px;
+  height: 40px;
+  background-color: white;
+  margin-left: 17px;
+  color:#22142B;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+#labelCadastrarTorneio {
+  margin-right: 10px; 
+}
+
+#inputCadastrarTorneio {
+  margin-right: 10px;
 }
