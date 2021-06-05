@@ -72,7 +72,6 @@ display: flex;
 
 .conteudoTorneio :hover{
       color: red;
-      text-decoration: underline;
 }
     
 .ImagemJogo {

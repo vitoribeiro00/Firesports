@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   torneios: [],
   partidasTorneio: [],
   openModal: false,
+  openModalCriacao: false,
   clickedTorneioId: 0,
 };
 
@@ -37,6 +38,16 @@ export default function torneio(state = INITIAL_STATE, action) {
       }
       case '@torneio/FECHAR_MODAL_TORNEIO_SENHA': {
         draft.textoSalaSenha = false;
+        break;
+      }
+
+      case '@torneio/ABRIR_MODAL_CRIACAO_TORNEIO': {
+        draft.openModalCriacao = true;
+        break;
+      }
+
+      case '@torneio/FECHAR_MODAL_CRIACAO_TORNEIO': {
+        draft.openModalCriacao = false;
         break;
       }
       default:

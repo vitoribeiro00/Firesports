@@ -16,9 +16,6 @@ const Home = () => {
                     <p >Pronto para simplificar o gerenciamento do seu torneio?</p>
                     <p>Junte-se a milhares de pessoas que confiam Firesports para gerir os seus torneios </p>    
                 </div>
-                <div className="conteudoBotaoHome">
-                    <Link to="/torneios"><div>Criar Torneio</div></Link>                               
-                </div>
             </div>
         </div>
     )

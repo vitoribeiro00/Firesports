@@ -24,6 +24,11 @@
     height: 600px;
 }
 
+#botaoCriarTorneio {
+    margin-left: 12px;
+    margin-top: 15px;
+}
+
 /* 
 
 .imagemTesteTorneio {
