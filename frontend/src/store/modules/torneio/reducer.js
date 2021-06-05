@@ -35,6 +35,10 @@ export default function torneio(state = INITIAL_STATE, action) {
         draft.clickedTorneioId = 0;
         break;
       }
+      case '@torneio/FECHAR_MODAL_TORNEIO_SENHA': {
+        draft.textoSalaSenha = false;
+        break;
+      }
       default:
     }
   });

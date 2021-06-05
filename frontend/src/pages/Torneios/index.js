@@ -30,12 +30,11 @@ const Torneios = () => {
                     <p>Coisas incríveis não acontecem dentro da zona de conforto!</p>
                     <p>Supere seus limites, e fique no topo!</p>
                 </div>
-
                 <div className="listaDeTorneios">
                     {torneios &&
                         torneios.map(
                             torneio => (
-                                <Torneio nome={torneio.Nome} torneioid={torneio.TorneioId} data_criacao={torneio.Data_criacao} descricao= {torneio.Descricao} qtd_por_equipe= {torneio.Qtd_por_equipe} qtd_equipe= {torneio.Qtd_equipe}/>
+                                <Torneio nome={torneio.Nome} torneioid={torneio.TorneioId} data_criacao={torneio.Data_criacao} descricao= {torneio.Descricao} qtd_por_equipe= {torneio.Qtd_por_equipe} qtd_equipe= {torneio.Qtd_equipe} sala_com_senha= {torneio.Sala_com_senha} senha= {torneio.Senha}/>
                             )
                         )}
                 </div>

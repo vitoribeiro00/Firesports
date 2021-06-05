@@ -38,3 +38,9 @@ export function FecharModalTorneio() {
     type: '@torneio/FECHAR_MODAL_TORNEIO',
   };
 }
+
+export function FecharModalTorneioSenha() {
+  return {
+    type: '@torneio/FECHAR_MODAL_TORNEIO_SENHA',
+  };
+}

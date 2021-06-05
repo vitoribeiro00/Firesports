@@ -162,7 +162,7 @@ func AdicionarTorneio(jogoid string, nome string, descricao string, sala_com_sen
 func BuscarRank() []model.Rank {
 	db := OpenConnection()
 
-	query := fmt.Sprint("select count(TV.equipeid) as Vitoria, E.nome from torneio_vencedor as TV inner join torneio as T on TV.torneioid = T.torneioid inner join equipe as E on TV.equipeid = E.equipeid group by E.nome order by Vitoria desc")
+	query := fmt.Sprint("SELECT nome , COUNT(*) as qtd_vitorias FROM partida_torneio as PT INNER JOIN equipe AS E ON PT.vencedor_torneio_id = E.equipeid GROUP BY nome ORDER BY qtd_vitorias DESC")
 
 	sqlStatement, err := db.Query(query)
 
@@ -175,7 +175,7 @@ func BuscarRank() []model.Rank {
 
 		var rank model.Rank
 
-		err = sqlStatement.Scan(&rank.Vitoria, &rank.Nome)
+		err = sqlStatement.Scan(&rank.Nome, &rank.Vitoria)
 		CheckErr(err)
 		ranks = append(ranks, rank)
 	}
@@ -183,7 +183,6 @@ func BuscarRank() []model.Rank {
 	defer sqlStatement.Close()
 	return ranks
 }
-
 
 func BuscarTorneioPartida(idTorneio string) []model.TorneioPartidas {
 	db := OpenConnection()
@@ -200,7 +199,7 @@ func BuscarTorneioPartida(idTorneio string) []model.TorneioPartidas {
 		var fase model.Fase
 
 		err = sqlStatement.Scan(
-			&fase.Numero_Fase, 
+			&fase.Numero_Fase,
 		)
 
 		CheckErr(err)
@@ -223,12 +222,12 @@ func BuscarTorneioPartida(idTorneio string) []model.TorneioPartidas {
 			var partida model.Partida
 
 			err = sqlStatement.Scan(
-				&partida.Nome_Torneio, 
-				&partida.Descricao_Torneio, 
-				&partida.Data_Criacao_Torneio, 
-				&partida.Partida_Torneio, 
-				&partida.Data_Partida_Torneio, 
-				&partida.Time_Vencedor, 
+				&partida.Nome_Torneio,
+				&partida.Descricao_Torneio,
+				&partida.Data_Criacao_Torneio,
+				&partida.Partida_Torneio,
+				&partida.Data_Partida_Torneio,
+				&partida.Time_Vencedor,
 				&partida.Time_a,
 				&partida.Time_b,
 				&partida.Time_c,

@@ -44,7 +44,6 @@ const Entrar = ({history}) => {
 
     return (
         <div className="ContainerEntrar">
-
             <div className="ContainerImageEntrar">
                 <img src="/images/sova-valorant.jpg" alt="Meu champion do vava" className="ImagemFundoEntrar"/>
             </div>
