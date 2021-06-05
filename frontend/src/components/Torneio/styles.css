@@ -1,3 +1,48 @@
+.conteudoSenhaTorneio{
+display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-left: 175px;
+   z-index:999999;
+}
+.hidden {
+    display: none;
+  }
+  .fecharModalTorneio{
+      color: tomato;
+      text-align: right;
+      justify-content: right;
+      cursor: pointer;
+  }
+  
+  .fundoModalTorneioSenha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+.modalModalTorneioSenha {
+    background-color:#22142B;
+    width: 500px;
+    height: 100px;
+}
+.torneioSenha{
+    font-size: 20px;
+    color: white;
+}
+.modalHeaderModalTorneioSenha {
+    display: block;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
 .conteudoTorneio {
     display: flex;
     box-sizing: border-box;
@@ -27,10 +72,10 @@
 
 .conteudoTorneio :hover{
       color: red;
-      text-decoration: underline;
 }
     
 .ImagemJogo {
+
     width: 100%;
     height: 100%;
     background-position: center;
