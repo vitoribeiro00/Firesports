@@ -38,3 +38,15 @@ export function FecharModalTorneio() {
     type: '@torneio/FECHAR_MODAL_TORNEIO',
   };
 }
+
+export function AbrirModalCriacaoTorneio(){
+  return {
+    type: '@torneio/ABRIR_MODAL_CRIACAO_TORNEIO',
+  };
+}
+
+export function FecharModalCriacaoTorneio(){
+  return {
+    type: '@torneio/FECHAR_MODAL_CRIACAO_TORNEIO',
+  };
+}

@@ -1,0 +1,46 @@
+.conteudoModalCriarTorneio {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 175px;
+    background-color: rgba(211, 211, 211, 0.8);
+    z-index: 1000;
+  }
+  
+
+  .hidden {
+    display: none;
+  }
+
+  .fundoModalCriarTorneio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.modalModalCriarTorneio {
+  background-color: white;
+  width: 800px;
+  height: 400px;
+}
+
+.modalHeaderModalCriarTorneio {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  justify-content: space-between;
+}
+
+.fecharModalCriarTorneio {
+  text-align: right;
+  justify-content: right;
+  cursor: pointer;
+}
