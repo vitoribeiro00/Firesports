@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
-import { AbrirModalTorneio, FecharModalTorneioSenha, SearchPartidasTorneio } from '../../store/modules/torneio/actions';
-
 import { Link } from 'react-router-dom';
+import { AbrirModalTorneio, SearchPartidasTorneio } from '../../store/modules/torneio/actions';
+
 import Reactotron from 'reactotron-react-js';
 import './styles.css';
 
@@ -24,30 +24,35 @@ export default function Torneio(props) {
             dispatch(AbrirModalTorneio(torneioid))
         }
     }
+
     const validarSenha = () => {
         if (inputSenha === senha) {
             setTextoSalaSenha("conteudoSenhaTorneio hidden")
+            setInputSenha("")
             dispatch(SearchPartidasTorneio(torneioid))
             dispatch(AbrirModalTorneio(torneioid))
         } else {
             alert("Senha inválida")
+            setInputSenha("")
         }
     }
-    const closeModal = () => {
-        dispatch(FecharModalTorneioSenha())
+
+    const closeModalSenha = () => {
+        setTextoSalaSenha("conteudoSenhaTorneio hidden")
     }
+
     return (
         <>
             <div className={textoSalaSenha} >
                 <div className="fundoModalTorneioSenha">
                     <div className="modalModalTorneioSenha">
                         <div className="modalHeaderModalTorneioSenha">
-                            <p className="torneioSenha">Insira a senha do {props.nome}:</p>
-                            <input type="password" name="password" onChange={(event) => { setInputSenha(event.target.value) }} />
-                            <button className="botaoSenha" onClick={validarSenha}>Entrar</button>
-                            <div className="fecharModalTorneio" onClick={closeModal}>
+                            <div className="fecharModalTorneio" onClick={closeModalSenha}>
                                 X
-                        </div>
+                            </div>
+                            <p className="torneioSenha">Insira a senha do {props.nome}:</p>
+                            <input type="password" name="password" value={inputSenha} onChange={(event) => { setInputSenha(event.target.value) }} />
+                            <button className="botaoSenha" onClick={validarSenha}>Entrar</button>
                         </div>
                     </div>
                 </div>
@@ -56,7 +61,6 @@ export default function Torneio(props) {
                 <img className="ImagemJogo" src={"/images/sova-valorant.jpg"} />
                 <div className="textoTorneio">
                     <p className="textoTitulo">{props.nome}</p>
-                    <p>{props.descricao}</p>
                     <p>Quantidade por Equipe:{props.qtd_por_equipe}</p>
                     <p>Quantidade de Equipe:{props.qtd_equipe}</p>
                     <p>Data Criação:{props.data_criacao}</p>
