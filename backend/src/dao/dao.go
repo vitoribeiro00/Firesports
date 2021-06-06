@@ -138,7 +138,7 @@ func BuscarTimes(usuarioId string) []model.Time {
 func AdicionarJogo(nome string, descricao string, genero string, data_lancamento string, req_qtd_min_usuario string, req_qtd_max_usuario string) int64 {
 	db := OpenConnection()
 
-	query := fmt.Sprint("INSERT INTO jogo (nome, descricao, genero, data_lancamento, req_qtd_min_usuario, req_qtd_max_usuario) VALUES ($1, $2, $3, $4, $5, $6) RETURNING usuarioid")
+	query := fmt.Sprint("INSERT INTO jogo (nome, descricao, genero, data_lancamento, req_qtd_min_usuario, req_qtd_max_usuario) VALUES ($1, $2, $3, $4, $5, $6) RETURNING jogoid")
 
 	id := 0
 
@@ -150,7 +150,7 @@ func AdicionarJogo(nome string, descricao string, genero string, data_lancamento
 func AdicionarTorneio(jogoid string, nome string, descricao string, sala_com_senha string, senha string, qtd_por_equipe string, qtd_equipe string) int64 {
 	db := OpenConnection()
 
-	query := fmt.Sprint("INSERT INTO torneio (jogoid, nome, descricao, sala_com_senha, senha, qtd_por_equipe, qtd_equipe) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING usuarioid")
+	query := fmt.Sprint("INSERT INTO torneio (jogoid, nome, descricao, sala_com_senha, senha, qtd_por_equipe, qtd_equipe) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING torneioid")
 
 	id := 0
 

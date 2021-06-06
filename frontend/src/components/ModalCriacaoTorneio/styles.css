@@ -14,9 +14,25 @@
 
 .conteudoModalPreenchimentoCriarTorneio {
   width: 100%;
-  margin: 10px;
 }
-  
+
+#botaoCadastrarCriarTorneio {
+  display: flex;
+  width: 120px;
+  height: 35px;
+  background-color: #22142B;
+  color: #FFFFFF;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#formCadastroCriarTorneio {
+  border: 1px #333 solid;
+  margin: 10px;
+  padding: 10px;
+}
+
 .conteudoCriarTorneio {
   display: flex;
   justify-content: center;
@@ -75,5 +91,15 @@
 }
 
 #inputCadastrarTorneio {
+  width: 200px;
+  margin-right: 10px;
+}
+
+#inputQtdCadastrarTorneio {
+  width: 50px;
+  margin-right: 10px;
+}
+
+#inputCheckCadastrarTorneio {
   margin-right: 10px;
 }

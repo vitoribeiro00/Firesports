@@ -41,8 +41,8 @@ const Torneios = () => {
                         <p>Criar Torneio</p>
                     </div>
                     {/* <button onClick={abrirModalCriarTorneio} id="botaoCriarTorneio">Criar Torneio</button> */}
-                    <ModalCriacaoTorneio />
                 </div>
+                <ModalCriacaoTorneio jogoid={jogoid}/>
 
                 <div className="listaDeTorneios">
                     {torneios &&

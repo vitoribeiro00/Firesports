@@ -2,11 +2,9 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { CarregarTorneios, CarregarPartidasTorneio } from './actions';
-
+import { CarregarTorneios, CarregarPartidasTorneio, SucessoCadastrarTorneio } from './actions';
 
 import Reactotron from 'reactotron-react-js';
-import React from 'react';
 
 export function* SearchTorneios({ payload }) {
   try {
@@ -23,7 +21,6 @@ export function* SearchTorneios({ payload }) {
     // yield put(signFailure());
   }
 }
-
 
 export function* SearchPartidasTorneio({payload}) {
   try {
@@ -42,7 +39,38 @@ export function* SearchPartidasTorneio({payload}) {
   }
 }
 
+export function* CadastrarTorneio({payload}) {
+  try {
+    const { jogoid, nome, descricao, checkSalaPrivada, senha, qtdEquipes, qtdJogadores } = payload;
+    
+    const params = new URLSearchParams()
+    params.append("jogoid", jogoid)
+    params.append("nome", nome)
+    params.append("descricao", descricao)
+    params.append("sala_com_senha", checkSalaPrivada)
+    params.append("senha", senha)
+    params.append("qtd_equipe", qtdEquipes)
+    params.append("qtd_por_equipe", qtdJogadores)
+
+    const options = {
+        headers: { 'content-type': 'application/x-www-form-urlencoded' }
+    }
+
+    const response = yield call(api.post, "torneio", params, options )
+
+    const data = response.data;
+    if(data.StatusCode > 0){
+      yield put(SucessoCadastrarTorneio());
+    }
+
+  } catch (error) {
+    Reactotron.log("FALHA AO BUSCAR AS PARTIDAS DO TORNEIO")
+  }
+}
+
+
 export function* torneioSagas() {
   yield takeLatest('@torneio/SEARCH_TORNEIOS', SearchTorneios);
   yield takeLatest('@torneio/SEARCH_PARTIDAS_TORNEIO', SearchPartidasTorneio);
+  yield takeLatest('@torneio/CADASTRAR_TORNEIO', CadastrarTorneio);
 }
