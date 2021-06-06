@@ -27,15 +27,6 @@ export default function ModalCriacaoTorneio() {
         dispatch(CadastrarTorneio(jogoid, nome, descricao, checkSalaPrivada, senha, qtdEquipes, qtdJogadores))
     }
 
-    useEffect(() => {
-        if(sucessCadastrarTorneio){
-            alert("Cadastrado com sucesso!");
-        }
-
-        dispatch(LimparSucesso());
-
-    }, [sucessCadastrarTorneio])
-
     return (
         <div className={openModalCriacao ? "conteudoModalCriarTorneio" : "conteudoModalCriarTorneio hidden"}>
             <div className="fundoModalCriarTorneio">
