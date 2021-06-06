@@ -28,11 +28,29 @@
     flex-direction: column;
     align-items: center;
 }
+.rankMenu:hover{
+    color: aqua;
+}
+.jogosMenu:hover{
+    color: aqua;
+}
+.entrarMenu:hover{
+    color: aqua;
+}
+.cadastrarMenu:hover{
+    color: aqua;
+}
+.imagemAvatar:hover{
+    color: aqua;
+}
 
 .conteudoMenu a {
     margin: 5px;
 }
-
+a:link 
+{ 
+ text-decoration:none; 
+}
 .rankMenu {
     display: flex;
     width: 240px;

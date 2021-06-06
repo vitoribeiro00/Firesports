@@ -19,6 +19,10 @@ export default function Torneio(props) {
         if (sala_com_senha) {
             setTextoSalaSenha("conteudoSenhaTorneio")
         }
+        else {
+            dispatch(SearchPartidasTorneio(torneioid))
+            dispatch(AbrirModalTorneio(torneioid))
+        }
     }
     const validarSenha = () => {
         if (inputSenha === senha) {
@@ -38,9 +42,9 @@ export default function Torneio(props) {
                 <div className="fundoModalTorneioSenha">
                     <div className="modalModalTorneioSenha">
                         <div className="modalHeaderModalTorneioSenha">
-                            <p className="torneioSenha">Insira a senha do Torneio</p>
+                            <p className="torneioSenha">Insira a senha do {props.nome}:</p>
                             <input type="password" name="password" onChange={(event) => { setInputSenha(event.target.value) }} />
-                            <button onClick={validarSenha}>Entrar</button>
+                            <button className="botaoSenha" onClick={validarSenha}>Entrar</button>
                             <div className="fecharModalTorneio" onClick={closeModal}>
                                 X
                         </div>

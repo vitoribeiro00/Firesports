@@ -14,12 +14,15 @@ class Jogo extends React.Component{
                         <img src={"/images/jogos/" + this.props.image} alt="Jogo"/>
                         <div className="camadaImagem"></div>
                     </div>
+                    </Link>
                     <div className="textoJogo">
-                        <p>{this.props.nome}</p>
+                    <p className="jogoNome">{this.props.nome}</p>
+                    <div className="jogoDescricao">
                         <p>{this.props.descricao}</p>
+                     </div>
                         <p>{this.props.genero}</p>
+                   
                     </div>
-                </Link>
             </div>
         )
     }
