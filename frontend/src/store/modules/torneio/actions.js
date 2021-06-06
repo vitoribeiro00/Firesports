@@ -63,14 +63,9 @@ export function CadastrarTorneio(jogoid, nome, descricao, checkSalaPrivada, senh
   };
 }
 
-export function SucessoCadastrarTorneio(){
+export function CadastrarIdTorneio(idCadastrarTorneio){
   return {
-    type: '@torneio/CADASTRAR_TORNEIO',
-  };
-}
-
-export function LimparSucesso(){
-  return {
-    type: '@torneio/LIMPAR_SUCESSO',
+    type: '@torneio/CADASTRAR_ID_TORNEIO',
+    payload: {idCadastrarTorneio}
   };
 }

@@ -17,7 +17,6 @@ const Torneios = () => {
     const { jogoid } = useParams()
     const torneios = useSelector(state => state.torneio.torneios);
 
-
     useEffect(() => {
         if(jogoid > 0){
             dispatch(SearchTorneios(jogoid));
@@ -27,6 +26,7 @@ const Torneios = () => {
     const abrirModalCriarTorneio = () => {
         dispatch(AbrirModalCriacaoTorneio())
     }
+
 
     return (
         <div className="conteudoTorneios">

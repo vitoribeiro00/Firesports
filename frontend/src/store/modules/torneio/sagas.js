@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { CarregarTorneios, CarregarPartidasTorneio, SucessoCadastrarTorneio } from './actions';
+import { CarregarTorneios, CarregarPartidasTorneio, CadastrarIdTorneio } from './actions';
 
 import Reactotron from 'reactotron-react-js';
 
@@ -60,7 +60,7 @@ export function* CadastrarTorneio({payload}) {
 
     const data = response.data;
     if(data.StatusCode > 0){
-      yield put(SucessoCadastrarTorneio());
+      yield put(CadastrarIdTorneio(data.StatusCode));
     }
 
   } catch (error) {

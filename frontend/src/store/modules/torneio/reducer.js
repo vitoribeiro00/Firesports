@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   openModal: false,
   openModalCriacao: false,
   clickedTorneioId: 0,
-  sucessCadastrarTorneio: false,
+  idCadastrarTorneio: -1,
 };
 
 
@@ -56,13 +56,8 @@ export default function torneio(state = INITIAL_STATE, action) {
         break;
       }
 
-      case '@torneio/SUCESSO_CADASTRAR': {
-        draft.sucessCadastrarTorneio = true;
-        break;
-      }
-
-      case '@torneio/LIMPAR_SUCESSO': {
-        draft.sucessCadastrarTorneio = false;
+      case '@torneio/CADASTRAR_ID_TORNEIO': {
+        draft.idCadastrarTorneio = action.payload.idCadastrarTorneio;
         break;
       }
       default:

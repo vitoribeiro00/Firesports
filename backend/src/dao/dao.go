@@ -89,7 +89,7 @@ func BuscarJogos() []model.Jogo {
 func BuscarTorneios(jogoId string) []model.Torneio {
 	db := OpenConnection()
 
-	query := fmt.Sprint("SELECT torneioid, nome, descricao, sala_com_senha, TO_CHAR(data_criacao :: DATE, 'dd/mm/yyyy'), senha, qtd_por_equipe, qtd_equipe FROM torneio where jogoid=" + jogoId + " ORDER BY nome ASC")
+	query := fmt.Sprint("SELECT torneioid, nome, descricao, sala_com_senha, COALESCE(TO_CHAR(data_criacao :: DATE, 'dd/mm/yyyy'), '-'), senha, qtd_por_equipe, qtd_equipe FROM torneio where jogoid=" + jogoId + " ORDER BY nome ASC")
 
 	sqlStatement, err := db.Query(query)
 
