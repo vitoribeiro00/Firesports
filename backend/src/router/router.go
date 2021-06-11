@@ -20,6 +20,7 @@ func Router() *mux.Router {
 	router.HandleFunc("/rank", controller.BuscarRank).Methods("GET")
 	router.HandleFunc("/torneio_partidas", controller.BuscarTorneioPartida).Methods("GET")
 	router.HandleFunc("/usuario", controller.AtualizarUsuario).Methods("PUT")
+	router.HandleFunc("/addTimeTorneio", controller.AdicionarTimeTorneio).Methods("POST")
 	
 	return router
 }

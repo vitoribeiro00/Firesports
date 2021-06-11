@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"model"
+	"strconv"
 
 	dbConfig "github.com/modules/gopostgres/dbconfig"
 
@@ -171,6 +172,79 @@ func AdicionarTorneio(jogoid string, nome string, descricao string, sala_com_sen
 	return int64(id)
 }
 
+func AdicionarTimeTorneio(usuarioid string, torneioid string, time string) int64 {
+	db := OpenConnection()
+	
+	query_time := fmt.Sprint("SELECT equipeid FROM equipe WHERE nome = '" + time + "'")
+
+	timeid := 0
+
+	db.QueryRow(query_time).Scan(&timeid)
+
+	if timeid == 0 {
+		return int64(-1)
+	}
+
+	query_usuario_time := fmt.Sprint("SELECT COUNT(*) FROM usuario_equipe WHERE equipeid=" + strconv.Itoa(timeid) + " and usuarioid = " + usuarioid + " and usuario_dono = " + usuarioid)
+	isUsuarioDono := 0
+
+	db.QueryRow(query_usuario_time).Scan(&isUsuarioDono)
+
+	if isUsuarioDono == 0 {
+		return int64(-2)
+	}
+
+	time_in_tournament := 0
+	
+	for i := 1; i <= 5; i ++ {
+		if time_in_tournament == 0 {
+			query_torneio_partida := fmt.Sprint("SELECT COUNT(*) FROM partida_torneio WHERE partida = 1 and torneioid = " + torneioid + " and time_" + strconv.Itoa(i) + "_id = " + strconv.Itoa(timeid))
+			db.QueryRow(query_torneio_partida).Scan(&time_in_tournament)
+		}
+	} 
+	
+	if time_in_tournament > 0 {
+		return int64(-3)
+	}
+
+	torneio_tem_partida := 0
+
+	query_torneio_tem_partida := fmt.Sprint("SELECT COUNT(*) FROM partida_torneio WHERE torneioid = " + torneioid + " and partida > 1")
+
+	db.QueryRow(query_torneio_tem_partida).Scan(&torneio_tem_partida)
+
+	if torneio_tem_partida > 0 {
+		return int64(-4)
+	}
+
+	partida_torneio_id := 0
+
+	query_criar_torneio_partida := fmt.Sprint("SELECT partida_torneioid FROM partida_torneio WHERE torneioid = " + torneioid + " and partida = 1")
+	db.QueryRow(query_criar_torneio_partida).Scan(&partida_torneio_id)
+
+	if partida_torneio_id == 0 {
+		query_insert_torneio_partida := fmt.Sprint("INSERT INTO partida_torneio (torneioid, fase, partida) VALUES (" + torneioid + ", 1, 1) RETURNING partida_torneioid")
+
+		db.QueryRow(query_insert_torneio_partida).Scan(&partida_torneio_id)
+	}
+
+	for i := 1; i <= 5; i++ {
+		time_empty := 0
+
+		query_partida_and_time_empty := fmt.Sprint("SELECT COUNT(*) FROM partida_torneio WHERE partida_torneioid = " + strconv.Itoa(partida_torneio_id) +  " and time_" + strconv.Itoa(i) + "_id is NULL")
+		fmt.Println(query_partida_and_time_empty)
+		db.QueryRow(query_partida_and_time_empty).Scan(&time_empty)
+
+		if time_empty > 0 {
+			query_partida_time := fmt.Sprint("UPDATE partida_torneio SET time_" + strconv.Itoa(i) + "_id = " + strconv.Itoa(timeid) + " WHERE partida_torneioid = " + strconv.Itoa(partida_torneio_id))
+			db.QueryRow(query_partida_time)
+			break;
+		}
+	}
+
+	return int64(partida_torneio_id)
+}
+
 func BuscarRank() []model.Rank {
 	db := OpenConnection()
 
@@ -221,7 +295,7 @@ func BuscarTorneioPartida(idTorneio string) []model.TorneioPartidas {
 	var torneioPartidas []model.TorneioPartidas
 	for _, fase := range fases {
 		db := OpenConnection()
-		query := fmt.Sprint("SELECT T.nome, T.descricao, TO_CHAR(T.data_criacao, 'DD/MM/YYYY') as data_criacao, PT.partida, TO_CHAR(PT.data_partida, 'DD/MM/YYYY') as data_partida,  ( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.timevencedorid = _E.equipeid WHERE _PT.timevencedorid = PT.timevencedorid) AS time_vencedor, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_1_id), '-') AS time_A, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_2_id), '-') AS time_B,  COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_3_id), '-') AS time_C, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_4_id), '-') AS time_D, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_5_id), '-') AS time_E FROM partida_torneio AS PT  INNER JOIN torneio AS T ON PT.torneioid = T.torneioid  WHERE PT.torneioid = " + idTorneio + " and fase= " + fase.Numero_Fase + " ORDER BY PT.partida, PT.fase;")
+		query := fmt.Sprint("SELECT T.nome, T.descricao, TO_CHAR(T.data_criacao, 'DD/MM/YYYY') as data_criacao, PT.partida, COALESCE(TO_CHAR(PT.data_partida, 'DD/MM/YYYY'), '-') as data_partida,  COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.timevencedorid = _E.equipeid WHERE _PT.timevencedorid = PT.timevencedorid), '-') AS time_vencedor, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_1_id), '-') AS time_A, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_2_id), '-') AS time_B,  COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_3_id), '-') AS time_C, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_4_id), '-') AS time_D, COALESCE(( SELECT DISTINCT _E.nome FROM partida_torneio AS _PT INNER JOIN equipe AS _E ON _PT.time_1_id = PT.time_1_id WHERE _E.equipeid = PT.time_5_id), '-') AS time_E FROM partida_torneio AS PT  INNER JOIN torneio AS T ON PT.torneioid = T.torneioid  WHERE PT.torneioid = " + idTorneio + " and fase= " + fase.Numero_Fase + " ORDER BY PT.partida, PT.fase;")
 		sqlStatement, err := db.Query(query)
 
 		CheckErr(err)

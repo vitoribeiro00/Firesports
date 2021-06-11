@@ -43,8 +43,10 @@ export default function ModalTorneio() {
                     </div>
 
                     <div className="conteudoModalModalTorneio">
-                        <ModalTimeTorneio />
+                        <ModalTimeTorneio torneioid={clickedTorneioId} />
                         <section id="suporteModalTorneio">
+
+
                             <div className="conteudoQuebraChaveTorneio">
                                 <div className="quebraChaveTorneioModalTorneio split-one">
                                     

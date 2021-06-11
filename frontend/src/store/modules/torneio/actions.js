@@ -82,9 +82,23 @@ export function FecharModalTimeTorneio(){
   };
 }
 
-export function AdicionarTimeTorneio(usuarioid, torneioid){
+export function AdicionarTimeTorneio(usuarioid, torneioid, time){
   return {
     type: '@torneio/ADICIONAR_TIME_AO_TORNEIO',
-    payload: {usuarioid, torneioid}
+    payload: {usuarioid, torneioid, time}
   };
+}
+
+export function FalhaAdicionarTimeTorneio(code){
+  return {
+    type: '@torneio/FALHA_ADICIONAR_TIME_TORNEIO',
+    payload: {code},
+  };
+}
+
+export function SucessoAdicionarTimeTorneio(code){
+  return {
+    type: '@torneio/SUCESSO_ADICIONAR_TIME_TORNEIO',
+    payload: {code},
+  }; 
 }

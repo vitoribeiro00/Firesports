@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { CarregarTorneios, CarregarPartidasTorneio, CadastrarIdTorneio, AdicionarTimeAoTorneio } from './actions';
+import { CarregarTorneios, CarregarPartidasTorneio, CadastrarIdTorneio, AdicionarTimeAoTorneio, FalhaAdicionarTimeTorneio, SucessoAdicionarTimeTorneio } from './actions';
 
 import Reactotron from 'reactotron-react-js';
 
@@ -68,10 +68,30 @@ export function* CadastrarTorneio({payload}) {
   }
 }
 
-
 export function* addTimeToTorneio( { payload } ){
   try {
-    const { usuarioid, torneioid } = payload;
+    const { usuarioid, torneioid, time } = payload;
+
+    Reactotron.log("add time")
+    const params = new URLSearchParams()
+    params.append("usuarioid", usuarioid)
+    params.append("torneioid", torneioid)
+    params.append("time", time)
+
+    const options = {
+        headers: { 'content-type': 'application/x-www-form-urlencoded' }
+    }
+
+    const response = yield call(api.post, "addTimeTorneio", params, options )
+
+    const data =  response.data 
+
+    if(data.StatusCode <= 0){
+      FalhaAdicionarTimeTorneio(data.StatusCode);
+    }else {
+      SucessoAdicionarTimeTorneio(data.StatusCode);
+    }
+
   }  catch(error){
     console.log(error)
   }

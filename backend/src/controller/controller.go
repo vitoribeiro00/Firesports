@@ -210,6 +210,30 @@ func AdicionarTorneio(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
+func AdicionarTimeTorneio(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+
+	if err != nil {
+		json.NewEncoder(w).Encode(
+			model.Response{
+				StatusCode: 0,
+			},
+		)
+	}
+
+	usuarioid := r.PostFormValue("usuarioid")
+	torneioid := r.PostFormValue("torneioid")
+	time := r.PostFormValue("time")
+
+	id := dao.AdicionarTimeTorneio(usuarioid, torneioid, time)
+
+	json.NewEncoder(w).Encode(
+		model.Response{
+			StatusCode: id,
+		},
+	)
+}
+
 func DeletarTorneio(w http.ResponseWriter, r *http.Request) {
 
 	err := r.ParseForm()

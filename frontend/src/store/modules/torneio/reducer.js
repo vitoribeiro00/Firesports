@@ -7,7 +7,10 @@ const INITIAL_STATE = {
   openModalCriacao: false,
   openModalTime: false,
   clickedTorneioId: 0,
-  idCadastrarTorneio: -1
+  idCadastrarTorneio: -1,
+  failAddTime: false,
+  sucessAddTime: false,
+  codeAddTime: -10,
 };
 
 
@@ -69,6 +72,18 @@ export default function torneio(state = INITIAL_STATE, action) {
       }
 
       case '@torneio/ADICIONAR_TIME_AO_TORNEIO': {
+        break;
+      }
+
+      case '@torneio/FALHA_ADICIONAR_TIME_TORNEIO': {
+        draft.failAddTime = true;
+        draft.codeAddTime = action.payload.code;
+        break;
+      }
+
+      case '@torneio/SUCESSO_ADICIONAR_TIME_TORNEIO': {
+        draft.sucessAddTime = true;
+        draft.codeAddTime = action.payload.code;
         break;
       }
       default:
