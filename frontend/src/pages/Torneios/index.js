@@ -40,7 +40,6 @@ const Torneios = () => {
                     <div className="botaoCriarTorneio" onClick={abrirModalCriarTorneio}>
                         <p>Criar Torneio</p>
                     </div>
-                    {/* <button onClick={abrirModalCriarTorneio} id="botaoCriarTorneio">Criar Torneio</button> */}
                 </div>
                 <ModalCriacaoTorneio jogoid={jogoid}/>
 

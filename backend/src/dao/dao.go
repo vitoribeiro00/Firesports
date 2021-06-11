@@ -33,7 +33,7 @@ func OpenConnection() *sql.DB {
 
 func BuscarUsuario(usuario string, senha string) model.Usuario {
 	db := OpenConnection()
-	r, err := db.Query("SELECT usuarioid, nome, sobrenome, data_nasc, usuario, email FROM usuario WHERE usuario='" + usuario + "' and senha ='" + senha + "'")
+	r, err := db.Query("SELECT usuarioid, nome, sobrenome, COALESCE(TO_CHAR(data_nasc :: DATE, 'yyyy-mm-dd'), '-'), usuario, email FROM usuario WHERE usuario='" + usuario + "' and senha ='" + senha + "'")
 	CheckErr(err)
 	defer db.Close()
 
@@ -46,6 +46,18 @@ func BuscarUsuario(usuario string, senha string) model.Usuario {
 	}
 
 	return user
+}
+
+func AtualizarUsuario(usuarioid string, nome string, sobrenome string, data_nasc string, usuario string, email string) int64 {
+	db := OpenConnection()
+
+	query := fmt.Sprint("UPDATE usuario SET nome=$1, sobrenome=$2, data_nasc=$3, usuario=$4, email=$5 WHERE usuarioid=" + usuarioid + " RETURNING usuarioid" )
+
+	id := 0
+
+	db.QueryRow(query, nome, sobrenome, data_nasc, usuario, email).Scan(&id)
+
+	return int64(id)
 }
 
 func CadastrarUsuario(nome string, sobrenome string, data_nasc string, usuario string, email string, senha string) int64 {
@@ -114,7 +126,7 @@ func BuscarTorneios(jogoId string) []model.Torneio {
 func BuscarTimes(usuarioId string) []model.Time {
 	db := OpenConnection()
 
-	query := fmt.Sprint("select E.equipeid, E.nome from usuario_equipe as UE INNER JOIN usuario as U ON UE.usuarioid = U.usuarioid INNER JOIN equipe as E ON UE.equipeid = E.equipeid WHERE U.usuarioid = " + usuarioId)
+	query := fmt.Sprint("select E.equipeid, E.nome, UE.usuario_dono from usuario_equipe as UE INNER JOIN usuario as U ON UE.usuarioid = U.usuarioid INNER JOIN equipe as E ON UE.equipeid = E.equipeid WHERE U.usuarioid = " + usuarioId)
 	sqlStatement, err := db.Query(query)
 
 	CheckErr(err)
@@ -126,7 +138,7 @@ func BuscarTimes(usuarioId string) []model.Time {
 
 		var time model.Time
 
-		err = sqlStatement.Scan(&time.TimeId, &time.Nome)
+		err = sqlStatement.Scan(&time.TimeId, &time.Nome, &time.Usuario_Dono)
 		CheckErr(err)
 		times = append(times, time)
 	}

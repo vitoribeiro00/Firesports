@@ -34,6 +34,25 @@
     justify-content: space-between;
 }
 
+.adicionarTimeTorneio h5 {
+  margin: 0;
+}
+
+
+.adicionarTimeTorneio {
+  width: 180px;
+  height: 20px;
+  background-color: #22142B;
+  padding: 5px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.adicionarTimeTorneio:hover {
+  background-color: #333;
+}
+
 .fecharModalTorneio {
     text-align: right;
     justify-content: right;
@@ -125,7 +144,7 @@
   right: 5px;
 }
 
-.timeModalTroneio {
+.timeModalTorneio {
   padding: 0 5px;
   margin: 3px 0;
   height: 25px;
@@ -133,6 +152,20 @@
   white-space: nowrap; 
   overflow: hidden;
   position: relative;
+  background-color: #FFFFFF;
+  color: #000;
+}
+
+.timeModalTorneio-winner {
+  padding: 0 5px;
+  margin: 3px 0;
+  height: 25px;
+  line-height: 25px;
+  white-space: nowrap; 
+  overflow: hidden;
+  position: relative;
+  background-color: red;
+  color: #000;
 }
 
 /* .faseModalTorneio-two .partidaModalTorneio {
@@ -156,11 +189,11 @@
   height: 40px;
 }
 
-.champion li, .faseModalTorneio li {
+/* .champion li, .faseModalTorneio li {
   background-color: #fff;
   box-shadow: none;
   opacity: 1;
-}
+} */
 
 .current li {
   opacity: 1;

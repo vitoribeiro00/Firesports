@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   partidasTorneio: [],
   openModal: false,
   openModalCriacao: false,
+  openModalTime: false,
   clickedTorneioId: 0,
   idCadastrarTorneio: -1
 };
@@ -48,12 +49,26 @@ export default function torneio(state = INITIAL_STATE, action) {
         break;
       }
 
+      case '@torneio/ABRIR_MODAL_TIME_TORNEIO': {
+        draft.openModalTime = true;
+        break;
+      }
+
+      case '@torneio/FECHAR_MODAL_TIME_TORNEIO': {
+        draft.openModalTime = false;
+        break;
+      }
+
       case '@torneio/CADASTRAR_TORNEIO': {
         break;
       }
 
       case '@torneio/CADASTRAR_ID_TORNEIO': {
         draft.idCadastrarTorneio = action.payload.idCadastrarTorneio;
+        break;
+      }
+
+      case '@torneio/ADICIONAR_TIME_AO_TORNEIO': {
         break;
       }
       default:

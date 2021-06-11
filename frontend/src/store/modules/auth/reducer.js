@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   id: -1,
   nome: "",
   sobrenome: "",
-  data_nasc: "",
+  dataNasc: "",
+  senha: "",
   usuario: "",
   email: ""
 };
@@ -17,7 +18,7 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.id = action.payload.id;
         draft.nome = action.payload.nome;
         draft.sobrenome = action.payload.sobrenome;
-        draft.data_nasc = action.payload.data_nasc;
+        draft.dataNasc = action.payload.dataNasc;
         draft.usuario = action.payload.usuario;
         draft.email = action.payload.email;
         break;
@@ -32,9 +33,15 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.id = -1;
         draft.nome = "";
         draft.sobrenome = "";
-        draft.data_nasc = "";
+        draft.dataNasc = "";
         draft.usuario = "";
         draft.email = "";
+        break;
+      }
+      case '@auth/ATUALIZAR_USUARIO': {
+        break;
+      }
+      case '@auth/ATUALIZAR_USUARIO_SUCCESS': {
         break;
       }
       default:

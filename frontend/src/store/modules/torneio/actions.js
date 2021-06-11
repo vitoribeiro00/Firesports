@@ -69,3 +69,22 @@ export function CadastrarIdTorneio(idCadastrarTorneio){
     payload: {idCadastrarTorneio}
   };
 }
+
+export function AbrirModalTimeTorneio(){
+  return {
+    type: '@torneio/ABRIR_MODAL_TIME_TORNEIO',
+  };
+}
+
+export function FecharModalTimeTorneio(){
+  return {
+    type: '@torneio/FECHAR_MODAL_TIME_TORNEIO',
+  };
+}
+
+export function AdicionarTimeTorneio(usuarioid, torneioid){
+  return {
+    type: '@torneio/ADICIONAR_TIME_AO_TORNEIO',
+    payload: {usuarioid, torneioid}
+  };
+}

@@ -43,6 +43,7 @@ type Response struct {
 type Time struct {
 	TimeId int64  `json:"TimeId"`
 	Nome   string `json:"Nome"`
+	Usuario_Dono int64 `json:"Usuario_Dono"`
 }
 
 type Rank struct {

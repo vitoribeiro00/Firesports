@@ -9,9 +9,6 @@ import (
 )
 
 func EntrarUsuario(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "POST")
-
 	err := r.ParseForm()
 
 	if err != nil {
@@ -31,9 +28,34 @@ func EntrarUsuario(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(results)
 }
 
+func AtualizarUsuario(w http.ResponseWriter, r *http.Request) {
+	err := r.ParseForm()
+
+	if err != nil {
+		json.NewEncoder(w).Encode(
+			model.Response{
+				StatusCode: 0,
+			},
+		)
+	}
+
+	usuarioid := r.PostFormValue("id")
+	nome := r.PostFormValue("nome")
+	sobrenome := r.PostFormValue("sobrenome")
+	dataNascimento := r.PostFormValue("dataNasc")
+	usuario := r.PostFormValue("usuario")
+	email := r.PostFormValue("email")
+
+	id := dao.AtualizarUsuario(usuarioid, nome, sobrenome, dataNascimento, usuario, email)
+
+	json.NewEncoder(w).Encode(
+		model.Response{
+			StatusCode: id,
+		},
+	)
+}
+
 func CadastrarUsuario(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "POST")
 
 	err := r.ParseForm()
 
@@ -62,8 +84,6 @@ func CadastrarUsuario(w http.ResponseWriter, r *http.Request) {
 }
 
 func BuscarJogos(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "GET")
 
 	jogos := dao.BuscarJogos()
 
@@ -71,8 +91,6 @@ func BuscarJogos(w http.ResponseWriter, r *http.Request) {
 }
 
 func BuscarRank(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "GET")
 
 	ranks := dao.BuscarRank()
 
@@ -80,8 +98,6 @@ func BuscarRank(w http.ResponseWriter, r *http.Request) {
 }
 
 func BuscarTorneios(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "GET")
 
 	if err := r.ParseForm(); err != nil {
 		fmt.Fprintf(w, "Metodo ParseForm gerou um erro: %v", err)
@@ -96,8 +112,6 @@ func BuscarTorneios(w http.ResponseWriter, r *http.Request) {
 }
 
 func BuscarTimes(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "GET")
 
 	if err := r.ParseForm(); err != nil {
 		fmt.Fprintf(w, "Metodo ParseForm gerou um erro: %v", err)
@@ -112,8 +126,6 @@ func BuscarTimes(w http.ResponseWriter, r *http.Request) {
 }
 
 func BuscarTorneioPartida(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "GET")
 
 	if err := r.ParseForm(); err != nil {
 		fmt.Fprintf(w, "Metodo ParseForm gerou um erro: %v", err)
@@ -128,8 +140,6 @@ func BuscarTorneioPartida(w http.ResponseWriter, r *http.Request) {
 }
 
 func AdicionarJogo(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "POST")
 
 	err := r.ParseForm()
 
@@ -158,8 +168,6 @@ func AdicionarJogo(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeletarJogo(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "DELETE")
 
 	err := r.ParseForm()
 
@@ -174,8 +182,6 @@ func DeletarJogo(w http.ResponseWriter, r *http.Request) {
 }
 
 func AdicionarTorneio(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "POST")
 
 	err := r.ParseForm()
 
@@ -205,8 +211,6 @@ func AdicionarTorneio(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeletarTorneio(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "DELETE")
 
 	err := r.ParseForm()
 

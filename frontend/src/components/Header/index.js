@@ -9,10 +9,13 @@ import './styles.css';
 export default function Header() {
     const dispatch = useDispatch();
 
-    const usuario = useSelector(state => state.auth.usuario); 
+    const usuario = useSelector(state => state.auth); 
 
     const logout = () => {
-        dispatch(signLoggout())
+        dispatch(signLoggout());
+        localStorage.removeItem("userLogged");
+        localStorage.removeItem("userIdLogged");
+        window.location.reload();
     }
 
     return (
@@ -23,20 +26,24 @@ export default function Header() {
             <div className="conteudoMenu">
                 <Link to="/rank"><div className="rankMenu">Rank</div></Link>
                 <Link to="/jogos"><div className="jogosMenu">Jogos</div></Link>
+                
                 {
-                    usuario === "" ? (
-                        <>
-                        <Link to="/entrar"><div className="entrarMenu">Entrar</div></Link>
-                        <Link to="/cadastrar"><div className="cadastrarMenu">Cadastrar</div></Link>
-                        </>
-                    ) : (
-                        <div className="perfilMenu">
-                            <Link to="/perfil"><img src="/images/avatar.png" alt={usuario} className="imagemAvatar"/></Link>
-
-                            <p onClick={logout}>Sair</p>
-                        </div>
-                    )
+                        usuario.id === -1 ?
+                            (
+                            <>
+                                <Link to="/entrar"><div className="entrarMenu">Entrar</div></Link>
+                                <Link to="/cadastrar"><div className="cadastrarMenu">Cadastrar</div></Link>
+                            </>
+                            ) :
+                            (
+                            <div className="perfilMenu">
+                                <Link to="/perfil"><img src="/images/avatar.png" alt={localStorage.getItem("userLogged")} className="imagemAvatar"/></Link>
+                                <p>{usuario.usuario}</p>
+                                <p id="sairPerfil" onClick={logout}>Sair</p>
+                            </div>
+                            )
                 }
+                    
             </div>
             <div className="rodapeMenu">
                 <p>Todos os direitos reservados</p>

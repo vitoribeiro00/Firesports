@@ -66,8 +66,8 @@ export default function ModalCriacaoTorneio() {
                             <br />
                             <label for="sala_privada" id="labelCadastrarTorneio">Sala privada: </label>
                             <input type="checkbox" id="inputCheckCadastrarTorneio" defaultChecked={checkSalaPrivada} onChange={(event) => { setCheckSalaPrivada(!checkSalaPrivada) }} />
-                            <label for="senha" id="labelCadastrarTorneio" value={senha}>Senha: </label>
-                            <input type="password" id="inputCadastrarTorneio" onChange={(event) => { setSenha(event.target.value) }} />
+                            <label for="senha" id="labelCadastrarTorneio" >Senha: </label>
+                            <input type="password" id="inputCadastrarTorneio"  value={senha} onChange={(event) => { setSenha(event.target.value) }} />
                             <br />
                             <label for="Quantidade de Equipes" id="labelCadastrarTorneio">Quantidade de Equipes:</label>
                             <input type="number" id="inputQtdCadastrarTorneio" value={qtdEquipes} onChange={(event) => { setQtdEquipes(event.target.value) }}/>

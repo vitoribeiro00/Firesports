@@ -9,6 +9,7 @@ import Reactotron from 'reactotron-react-js';
 export function* buscarTime({ payload }) {
   try {
     const { usuarioid } = payload;
+
     if(usuarioid){
       const url_path = "time?usuarioId=" + usuarioid
 

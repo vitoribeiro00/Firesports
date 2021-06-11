@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { CarregarTorneios, CarregarPartidasTorneio, CadastrarIdTorneio } from './actions';
+import { CarregarTorneios, CarregarPartidasTorneio, CadastrarIdTorneio, AdicionarTimeAoTorneio } from './actions';
 
 import Reactotron from 'reactotron-react-js';
 
@@ -69,8 +69,17 @@ export function* CadastrarTorneio({payload}) {
 }
 
 
+export function* addTimeToTorneio( { payload } ){
+  try {
+    const { usuarioid, torneioid } = payload;
+  }  catch(error){
+    console.log(error)
+  }
+}
+
 export function* torneioSagas() {
   yield takeLatest('@torneio/SEARCH_TORNEIOS', SearchTorneios);
   yield takeLatest('@torneio/SEARCH_PARTIDAS_TORNEIO', SearchPartidasTorneio);
   yield takeLatest('@torneio/CADASTRAR_TORNEIO', CadastrarTorneio);
+  yield takeLatest('@torneio/ADICIONAR_TIME_AO_TORNEIO', addTimeToTorneio);
 }
