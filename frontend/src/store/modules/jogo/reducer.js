@@ -8,10 +8,10 @@ const INITIAL_STATE = {
 export default function auth(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case '@auth/SEARCH_JOGOS': {
+      case '@jogo/SEARCH_JOGOS': {
         break;
       }
-      case '@auth/CARREGAR_JOGOS': {
+      case '@jogo/CARREGAR_JOGOS': {
         draft.jogos = action.payload.jogos;
         break;
       }

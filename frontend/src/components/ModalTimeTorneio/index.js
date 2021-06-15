@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 
 import { buscarTime } from '../../store/modules/time/actions';
 
-import { FecharModalTimeTorneio, AdicionarTimeTorneio } from '../../store/modules/torneio/actions';
+import { FecharModalTimeTorneio, AdicionarTimeTorneio, LimparCampos } from '../../store/modules/torneio/actions';
 
 import './styles.css';
 
@@ -16,51 +15,58 @@ export default function ModalTimeTorneio(props) {
 
     const times = useSelector(state => state.time.time);
     const auth = useSelector(state => state.auth);
-    const torneio = useSelector(state => state.torneio)
-    
     const openModalTime = useSelector(state => state.torneio.openModalTime); 
+    const torneio = useSelector(state => state.torneio);
 
-    const [usuario, setUsuario] = useState(auth);
     const [failAddTime, setFailAddTime] = useState(torneio.failAddTime);
     const [sucessAddTime, setSucessAddTime] = useState(torneio.sucessAddTime);
-    const [codeStatusTime, setCodeStatusTime] = useState(torneio.codeAddTime);
+    const [message, setMessage] = useState("");
+
+    const [usuario, setUsuario] = useState(auth);
 
     const [time, setTime] = useState('')
 
     const closeModalTimeTorneio = () => {
+        setMessage("");
         dispatch(FecharModalTimeTorneio())
     }
 
-    // useEffect(() => {
-    //     console.log("torneio fail " + torneio.failAddTime)
-    //     console.log("torneio sucess " + torneio.sucessAddTime)
-
-    //     if(torneio.failAddTime) {
-    //         alert("ERROR")
-    //     }
-
-    //     if(torneio.sucessAddTime){
-    //         closeModalTimeTorneio()
-    //         alert("SUCESS")
-    //     }
-    // }, [torneio.failAddTime, torneio.sucessAddTime, ])
+    useEffect(() => {
+        setFailAddTime(torneio.failAddTime);
+    }, [torneio.failAddTime])
 
     useEffect(() => {
-        Reactotron.log(sucessAddTime)
-    }, [sucessAddTime])
+        setSucessAddTime(torneio.sucessAddTime)
+    }, [torneio.sucessAddTime])
 
     useEffect(() => {
-
         if (usuario?.id > 0){
             dispatch(buscarTime(usuario.id));
         }
-
     }, [])
 
+    useEffect(() => {        
+        if(sucessAddTime){
+            setMessage("Torneio adicionado com sucesso!");
+            setTime("");
+            dispatch(LimparCampos()); 
+            closeModalTimeTorneio();
+        }
+    }, [sucessAddTime])
+
+    useEffect(() => {
+        if(failAddTime){
+            setMessage("Falha ao adicionar o torneio!");
+            setTime("");
+            dispatch(LimparCampos());
+        }
+    }, [failAddTime])
+
     const addTime = () => {
-        console.log(time + " - " + usuario.id + " - " + torneioid)
+        
         if(time !== "" && usuario.id > 0 && torneioid > 0){
-            dispatch(AdicionarTimeTorneio(usuario.id, torneioid, time))
+            setMessage("");
+            dispatch(AdicionarTimeTorneio(usuario.id, torneioid, time));
         }
     }
 
@@ -86,6 +92,8 @@ export default function ModalTimeTorneio(props) {
                                     Adicionar 
                                 </h5>
                             </div>
+
+                            <p>{message}</p>
                         </form>
                         <datalist id="times">
                             {

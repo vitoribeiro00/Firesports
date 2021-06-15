@@ -12,9 +12,7 @@ const Rank = () => {
     const dispatch = useDispatch();
     let ranks = useSelector(state => state.rank.rank);
 
-    useEffect(() => {
-        dispatch(SearchRank());
-    }, [])
+    useEffect(() => {dispatch(SearchRank());}, [])
 
     return (
         <div className="ConteinerRank">

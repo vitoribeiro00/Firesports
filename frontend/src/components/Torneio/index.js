@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom';
 import { AbrirModalTorneio, SearchPartidasTorneio } from '../../store/modules/torneio/actions';
 
-import Reactotron from 'reactotron-react-js';
 import './styles.css';
 
 export default function Torneio(props) {
     const dispatch = useDispatch();
-    const nome = props.nome;
     const torneioid = props.torneioid;
     const senha = props.senha;
     const sala_com_senha = props.sala_com_senha;
@@ -58,7 +55,7 @@ export default function Torneio(props) {
                 </div>
             </div>
             <div className="conteudoTorneio" onClick={openModal}>
-                <img className="ImagemJogo" src={"/images/sova-valorant.jpg"} />
+                <img className="ImagemJogo" src={"/images/sova-valorant.jpg"} alt="Imagem"/>
                 <div className="textoTorneio">
                     <p className="textoTitulo">{props.nome}</p>
                     <p>Quantidade por Equipe:{props.qtd_por_equipe}</p>

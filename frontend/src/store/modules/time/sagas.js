@@ -1,10 +1,8 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { carregarTime } from './actions';
-
-import Reactotron from 'reactotron-react-js';
+import { carregarTime } from './actions'
 
 export function* buscarTime({ payload }) {
   try {
@@ -23,6 +21,8 @@ export function* buscarTime({ payload }) {
   }
 }
 
-export function* timeSagas() {
-  yield takeLatest('@auth/BUSCAR_TIME', buscarTime);
+export function *timeSagas() {
+  yield all([
+    takeLatest('@time/BUSCAR_TIME', buscarTime),
+  ]);
 }

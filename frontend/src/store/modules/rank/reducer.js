@@ -8,10 +8,10 @@ const INITIAL_STATE = {
 export default function rank(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case '@auth/SEARCH_RANK': {
+      case '@rank/SEARCH_RANK': {
         break;
       }
-      case '@auth/CARREGAR_RANK': {
+      case '@rank/CARREGAR_RANK': {
         draft.rank = action.payload.rank;
         break;
       }

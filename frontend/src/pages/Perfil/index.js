@@ -12,6 +12,7 @@ import Reactotron from 'reactotron-react-js';
 
 const Perfil = ( { history } ) => {
     const dispatch = useDispatch();
+    
     const times = useSelector(state => state.time.time);
 
     const auth = useSelector(state => state.auth);
@@ -115,10 +116,10 @@ const Perfil = ( { history } ) => {
                                             <div className="acoesTime">
 
                                                 {
-                                                    t.Usuario_Dono != usuario.id && <p onClick={sairTime}>sair</p>
+                                                    t.Usuario_Dono !== usuario.id && <p onClick={sairTime}>sair</p>
                                                 }
                                                 {
-                                                    t.Usuario_Dono == usuario.id  && <p onClick={deletarTime}>deletar</p>
+                                                    t.Usuario_Dono === usuario.id  && <p onClick={deletarTime}>deletar</p>
                                                 }
                                             </div>
                                     </div>                                        

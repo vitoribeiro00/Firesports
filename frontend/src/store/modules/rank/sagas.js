@@ -1,15 +1,15 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import {
+  all, call, takeLatest, put,
+} from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { CarregarRank } from './actions';
-
-
 import Reactotron from 'reactotron-react-js';
+
+import { CarregarRank } from './actions';
 
 export function* SearchRank() {
   try {
-
     const response = yield call(api.get,'rank');
     const data = response.data;
     yield put(CarregarRank(data));
@@ -19,6 +19,8 @@ export function* SearchRank() {
   }
 }
 
-export function* rankSagas() {
-  yield takeLatest('@auth/SEARCH_RANK', SearchRank);
+export function *rankSagas() {
+  yield all([
+    takeLatest('@rank/SEARCH_RANK', SearchRank),
+  ]);
 }

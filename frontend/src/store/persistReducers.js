@@ -1,15 +1,16 @@
   
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import allReducers from './modules/rootReducer';
 
-export default reducers => {
+export default () =>  {
   const persistedReducer = persistReducer(
     {
       key: 'firesports',
       storage,
-      whitelist: ['auth', 'jogo', 'rank', 'time', 'torneio'],
+      whitelist: ['auth', 'jogo'],
     },
-    reducers,
+    allReducers,
   );
 
   return persistedReducer;

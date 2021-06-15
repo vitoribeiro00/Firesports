@@ -1,10 +1,10 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
-import { CarregarTorneios, CarregarPartidasTorneio, CadastrarIdTorneio, AdicionarTimeAoTorneio, FalhaAdicionarTimeTorneio, SucessoAdicionarTimeTorneio } from './actions';
-
 import Reactotron from 'reactotron-react-js';
+
+import {  CarregarTorneios, CarregarPartidasTorneio, CadastrarIdTorneio, FalhaAdicionarTimeTorneio, SucessoAdicionarTimeTorneio } from './actions';
 
 export function* SearchTorneios({ payload }) {
   try {
@@ -33,7 +33,6 @@ export function* SearchPartidasTorneio({payload}) {
     const data = response.data;
 
     yield put(CarregarPartidasTorneio(data));
-
   } catch (error) {
     Reactotron.log("FALHA AO BUSCAR AS PARTIDAS DO TORNEIO")
   }
@@ -71,8 +70,6 @@ export function* CadastrarTorneio({payload}) {
 export function* addTimeToTorneio( { payload } ){
   try {
     const { usuarioid, torneioid, time } = payload;
-
-    Reactotron.log("add time")
     const params = new URLSearchParams()
     params.append("usuarioid", usuarioid)
     params.append("torneioid", torneioid)
@@ -85,21 +82,22 @@ export function* addTimeToTorneio( { payload } ){
     const response = yield call(api.post, "addTimeTorneio", params, options )
 
     const data =  response.data 
-
+    
     if(data.StatusCode <= 0){
-      FalhaAdicionarTimeTorneio(data.StatusCode);
+      yield put(FalhaAdicionarTimeTorneio());
     }else {
-      SucessoAdicionarTimeTorneio(data.StatusCode);
+      yield put(SucessoAdicionarTimeTorneio());
     }
-
   }  catch(error){
-    console.log(error)
+    Reactotron.log("FALHA AO BUSCAR addTimeToTorneio: " + error)
   }
 }
 
-export function* torneioSagas() {
-  yield takeLatest('@torneio/SEARCH_TORNEIOS', SearchTorneios);
-  yield takeLatest('@torneio/SEARCH_PARTIDAS_TORNEIO', SearchPartidasTorneio);
-  yield takeLatest('@torneio/CADASTRAR_TORNEIO', CadastrarTorneio);
-  yield takeLatest('@torneio/ADICIONAR_TIME_AO_TORNEIO', addTimeToTorneio);
+export function *torneioSagas() {
+  yield all([
+    takeLatest('@torneio/SEARCH_TORNEIOS', SearchTorneios),
+    takeLatest('@torneio/SEARCH_PARTIDAS_TORNEIO', SearchPartidasTorneio),
+    takeLatest('@torneio/CADASTRAR_TORNEIO', CadastrarTorneio),
+    takeLatest('@torneio/ADICIONAR_TIME_AO_TORNEIO', addTimeToTorneio),
+  ]);
 }

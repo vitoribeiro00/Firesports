@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put, all } from 'redux-saga/effects';
 
 import api from '../../../services/api';
 
@@ -55,7 +55,9 @@ export function* updateUser( { payload }){
   }
 }
 
-export function* authSagas() {
-  yield takeLatest('@auth/SIGN_IN_REQUEST', signIn);
-  yield takeLatest('@auth/ATUALIZAR_USUARIO', updateUser);
-};
+export function *authSagas() {
+  yield all([
+    takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+    takeLatest('@auth/ATUALIZAR_USUARIO', updateUser),
+  ]);
+}

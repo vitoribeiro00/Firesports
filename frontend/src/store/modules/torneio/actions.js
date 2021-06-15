@@ -36,23 +36,27 @@ export function AbrirModalTorneio(torneioid) {
 export function FecharModalTorneio() {
 return {
   type: '@torneio/FECHAR_MODAL_TORNEIO',
+  payload: {},
 };
 }
 
 export function FecharModalTorneioSenha() {
   return {
     type: '@torneio/FECHAR_MODAL_TORNEIO_SENHA',
+
   };
 }
 export function AbrirModalCriacaoTorneio(){
   return {
     type: '@torneio/ABRIR_MODAL_CRIACAO_TORNEIO',
+
   };
 }
 
 export function FecharModalCriacaoTorneio(){
   return {
     type: '@torneio/FECHAR_MODAL_CRIACAO_TORNEIO',
+
   };
 }
 
@@ -89,16 +93,20 @@ export function AdicionarTimeTorneio(usuarioid, torneioid, time){
   };
 }
 
-export function FalhaAdicionarTimeTorneio(code){
+export function FalhaAdicionarTimeTorneio(){
   return {
     type: '@torneio/FALHA_ADICIONAR_TIME_TORNEIO',
-    payload: {code},
   };
 }
 
-export function SucessoAdicionarTimeTorneio(code){
+export function SucessoAdicionarTimeTorneio(){
   return {
     type: '@torneio/SUCESSO_ADICIONAR_TIME_TORNEIO',
-    payload: {code},
   }; 
+}
+
+export function LimparCampos(){
+  return {
+    type: '@torneio/LIMPAR_CAMPOS_TIME_TORNEIO',
+  };
 }

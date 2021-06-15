@@ -8,15 +8,15 @@ const INITIAL_STATE = {
 export default function time(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
-      case '@auth/BUSCAR_TIME': {
+      case '@time/BUSCAR_TIME': {
         break;
       }
 
-      case '@auth/CARREGAR_TIME': {
+      case '@time/CARREGAR_TIME': {
         draft.time = action.payload.time;
         break;
       }
-      default:
+      default: 
     }
   });
 }

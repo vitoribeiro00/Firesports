@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { FecharModalTorneio, AbrirModalTimeTorneio } from '../../store/modules/torneio/actions';
+import { FecharModalTorneio, AbrirModalTimeTorneio, SearchPartidasTorneio } from '../../store/modules/torneio/actions';
 
 import ModalTimeTorneio from "../../components/ModalTimeTorneio";
 
@@ -10,17 +10,23 @@ import './styles.css';
 
 export default function ModalTorneio() {
     const dispatch = useDispatch();
-    const torneios = useSelector(state => state.torneio.torneios);
     const partidasTorneio = useSelector(state => state.torneio.partidasTorneio)
     const openModal = useSelector(state => state.torneio.openModal); 
-    const clickedTorneioId = useSelector(state => state.torneio.clickedTorneioId); 
+    const clickedTorneioId = useSelector(state => state.torneio.clickedTorneioId);
+    const torneio = useSelector(state => state.torneio);
 
+    useEffect(() => {
+        if(!torneio.openModalTime){
+            dispatch(SearchPartidasTorneio(clickedTorneioId));
+        }
+
+    }, [torneio.openModalTime])
+    
     const closeModal = () => {
         dispatch(FecharModalTorneio())
     }
 
     const  abrirModalTime= () => {
-        console.log("Abrir modal time")
         dispatch(AbrirModalTimeTorneio())
     }
 
