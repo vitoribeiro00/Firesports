@@ -6,7 +6,7 @@ import './styles.css';
 
 import Reactotron from 'reactotron-react-js';
 
-const Cadastrar = () => {
+const Cadastrar = ({history}) => {
     const [nome, setNome] = useState('')
     const [sobrenome, setSobrenome] = useState('')
     const [email, setEmail] = useState('')
@@ -54,11 +54,21 @@ const Cadastrar = () => {
         }
     }
 
+    const handleHome = () => {
+        console.log("Clicou!")
+        history.push("/")
+    }
+
+    const handleEntrar = () => {
+        history.push("/entrar");
+    }
+
     return (
         <div className="Container">
             <div className="ContainerImage">
                 <img src="/images/sova-valorant.jpg" alt="Meu champion do vava" className="ImagemFundo"/>
             </div>
+            <div className="logoEntrar" onClick={handleHome}></div>
             <div className="ContainerConteudo">
                 <div className="ModalCadastrar">
                     <div className="ConteudoFormularioCadastro">
@@ -76,13 +86,15 @@ const Cadastrar = () => {
                         <input type="password" name="inputConfirmarSenha" onChange={ (event) => {setConfirmarSenha(event.target.value)}} required />
                         <label>Data de Nascimento</label>
                         <input type="date" name="inputDataNasc" onChange={ (event) => {setDataNascimento(event.target.value)}}/>
+                        <p><input type="checkbox" defaultChecked={checkedTermoUso} onChange={() => setCheckedTermoUso(!checkedTermoUso)}/>Aceito os termos de uso</p>
+                        <div className="ButtonCadastrar" onClick={Cadastrar}>
+                            Cadastrar
+                        </div>
                     </div>
-                    <p><input type="checkbox" defaultChecked={checkedTermoUso} onChange={() => setCheckedTermoUso(!checkedTermoUso)}/>Aceito os termos de uso</p>
-                    <div className="ButtonCadastrar">
-                        <button onClick={()=> {Cadastrar()}}>Cadastrar</button>
-                    </div>
-                    <div className="ButtonEntrar">
-                        <p>Entrar</p>
+                    
+
+                    <div className="ButtonEntrar" onClick={handleEntrar}>
+                        Entrar
                     </div>
                 </div>
                 <p>{mensagemErro}</p>

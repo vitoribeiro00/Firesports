@@ -16,6 +16,7 @@ const Torneios = () => {
 
     const { jogoid } = useParams()
     const torneios = useSelector(state => state.torneio.torneios);
+    let idCadastrarTorneio = useSelector(state => state.torneio.idCadastrarTorneio);
 
     useEffect(() => {
         if(jogoid > 0){
@@ -28,6 +29,12 @@ const Torneios = () => {
     }
 
 
+    useEffect(() => {
+        if(idCadastrarTorneio > 0){
+            dispatch(SearchTorneios(jogoid));
+        }
+    }, [idCadastrarTorneio]);
+    
     return (
         <div className="conteudoTorneios">
             <Header />

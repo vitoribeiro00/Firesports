@@ -40,6 +40,10 @@ const Entrar = ({history}) => {
         history.push("/")
     }
 
+    const handleCadastrar = () => {
+        history.push("/cadastrar")
+    }
+
     return (
         <div className="ContainerEntrar">
             <div className="ContainerImageEntrar">
@@ -53,13 +57,13 @@ const Entrar = ({history}) => {
                         <input type="text" name="usuario" onChange={(event)=> {setInputUsuario(event.target.value)}} />
                         <label>Senha</label>
                         <input type="password" name="password" onChange={ (event) => {setInputSenha(event.target.value)}}/>
+                        <div className="botaoEntrar" onClick={handleSubmit}>
+                            Entrar
+                        </div>
                     </div>
-                    <div className="ButtonEntrar">
-                        <button onClick={handleSubmit}>Entrar</button>
-                    </div>
-                    <div className="ConteudoLinkEntrar">
-                        <p>Esqueci a senha</p>
-                        <p>Cadastrar</p>
+
+                    <div className="ConteudoLinkEntrar" onClick={handleCadastrar}>
+                        Cadastrar
                     </div>
                     <div className="MensagemErrorEntrar">
                         <p>

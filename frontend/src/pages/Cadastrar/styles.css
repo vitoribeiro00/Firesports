@@ -61,15 +61,27 @@ label {
 }
 
 .ButtonCadastrar {
-    text-align: end;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-top: 20px;
+    display: flex;
+    height: 30px;
+    background-color: white;
+    margin-left: 185px;
+    color:#22142B;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 2px;
 }
 
 .ButtonEntrar {
     text-align: center;
     margin-left: 40px;
     margin-right: 40px;
+    text-decoration: underline #FFFFFF;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    cursor: pointer;
 }
 
 .Footer {

@@ -25,20 +25,18 @@ export default function ModalCriacaoTorneio() {
 
     const cadastrarTorneio = () => {
         dispatch(CadastrarTorneio(jogoid, nome, descricao, checkSalaPrivada, senha, qtdEquipes, qtdJogadores));
-        alert("Cadastrado com sucesso!");
-        setNome("");
-        setDescricao("");
-        setCheckSalaPrivada(false);
-        setSenha("");
-        setQtdEquipes(0);
-        setQtdJogadores(0);
-        closeModalCriarTorneio();
     }
 
     
     useEffect(()=> {
         if(idCadastrarTorneio  > 0){
-            console.log("Cadastrou com sucesso!");
+            setNome("");
+            setDescricao("");
+            setCheckSalaPrivada(false);
+            setSenha("");
+            setQtdEquipes(0);
+            setQtdJogadores(0);
+            closeModalCriarTorneio();
         }else if(idCadastrarTorneio === 0){
             console.log("FALHA AO CADASTRAR");
         }

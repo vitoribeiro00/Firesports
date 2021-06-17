@@ -57,20 +57,19 @@
 
 .ConteudoFormularioEntrar input {
     margin-top: 10px;
+    height: 20px;
 }
 
 .ConteudoFormularioEntrar label {
     margin-top: 10px;
 }
 
-.ButtonEntrar {
-    margin-top: 20px;
-}
-
 .ConteudoLinkEntrar {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 40px;
+    cursor: pointer;
+    text-decoration: underline #FFFFFF; 
 }
 
 .ConteudoLinkEntrar p {
@@ -93,3 +92,19 @@
     padding: 0;
     margin: 0;
 }
+
+
+.botaoEntrar {
+    margin-top: 20px;
+    display: flex;
+    height: 30px;
+    background-color: white;
+    margin-left: 140px;
+    color:#22142B;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  
